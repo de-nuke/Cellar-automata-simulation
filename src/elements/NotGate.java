@@ -11,17 +11,14 @@ import java.awt.Point;
  *
  * @author Dom
  */
-public class Wire extends Element {
-    
+public class NotGate extends Element {
     String direction;
     int length;
     
-    public Wire(String n, Point p, String direction, int length ) {
+    public NotGate(String n, Point p, String direction, int length ) {
         super(n,p);
         this.direction = direction;
         this.length = length;
     }
-    
-    
     
 }

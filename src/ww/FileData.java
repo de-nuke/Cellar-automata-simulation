@@ -5,6 +5,9 @@
  */
 package ww;
 
+import elements.DiodeN;
+import elements.Element;
+import elements.Wire;
 import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,6 +23,7 @@ import java.util.ArrayList;
 public class FileData {
 
     ArrayList<String> elements = new ArrayList();
+    ArrayList<Element> elementes = new ArrayList();
     ArrayList<Point> coordinates = new ArrayList();
     Integer n = 0;
 
@@ -48,8 +52,18 @@ public class FileData {
             lineParts = line.split("\\s+");
 
             if (isRecognized(lineParts[0]) && isCorrectPoint(lineParts[1], lineParts[2])) {
-                elements.add(lineParts[0]);
-                coordinates.add(new Point(Integer.parseInt(lineParts[1]), Integer.parseInt(lineParts[2])));
+//                elements.add(lineParts[0]);
+//                coordinates.add(new Point(Integer.parseInt(lineParts[1]), Integer.parseInt(lineParts[2])));
+                Point p = new Point(Integer.parseInt(lineParts[1]), Integer.parseInt(lineParts[2]));
+                switch(lineParts[0]) {
+                    case "wire": {
+                        elementes.add(new Wire("wire", p, "right", 3));
+                    } break;
+                    case "diodenormal": {
+                        elementes.add(new DiodeN("diode", p, "right", 5));
+                    }
+                }
+
                 n++;
             } else {
                 System.err.println("Wrong data format in line " + (n+1) + "!");

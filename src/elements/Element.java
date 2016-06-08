@@ -15,6 +15,10 @@ public class Element {
     String name;
     Point position; //left, upper corner
     
+    public Element(String n, Point p) {
+        this.name = n;
+        this.position = p;
+    }
     
     public String getName() {
         return name;

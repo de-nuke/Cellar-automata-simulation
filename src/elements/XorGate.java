@@ -11,17 +11,14 @@ import java.awt.Point;
  *
  * @author Dom
  */
-public class Wire extends Element {
-    
+public class XorGate extends Element {
     String direction;
     int length;
     
-    public Wire(String n, Point p, String direction, int length ) {
+    public XorGate(String n, Point p, String direction, int length ) {
         super(n,p);
         this.direction = direction;
         this.length = length;
     }
-    
-    
     
 }

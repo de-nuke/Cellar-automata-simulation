@@ -1,0 +1,3 @@
+1. Obiekty elementów s¹ tworzone podczas wczytywania pliku - umieszczane a arraylisicie
+2. Ta lista jest póŸniej u¿ywana do wype³nienia tablicy 2D z intami, aby przeprowadzaæ generacje
+3. To w³asnie na tej tablicy bêdzie operowa³ Generator, i to tê tablicê bêdzie czyta³a metoda PainComponent podczas malowania
