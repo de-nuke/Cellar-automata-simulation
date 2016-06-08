@@ -52,17 +52,17 @@ public class FileData {
             lineParts = line.split("\\s+");
 
             if (isRecognized(lineParts[0]) && isCorrectPoint(lineParts[1], lineParts[2])) {
-                elements.add(lineParts[0]);
-                coordinates.add(new Point(Integer.parseInt(lineParts[1]), Integer.parseInt(lineParts[2])));
-//                Point p = new Point(Integer.parseInt(lineParts[1]), Integer.parseInt(lineParts[2]));
-//                switch(lineParts[0]) {
-//                    case "wire": {
-//                        elementes.add(new Wire("wire", p, "right", 3));
-//                    } break;
-//                    case "diodenormal": {
-//                        elementes.add(new DiodeN("diode", p, "right", 5));
-//                    }
-//                }
+//                elements.add(lineParts[0]);
+//                coordinates.add(new Point(Integer.parseInt(lineParts[1]), Integer.parseInt(lineParts[2])));
+                Point p = new Point(Integer.parseInt(lineParts[1]), Integer.parseInt(lineParts[2]));
+                switch(lineParts[0]) {
+                    case "wire": {
+                        elementes.add(new Wire("wire", p, "right", 3));
+                    } break;
+                    case "diodenormal": {
+                        elementes.add(new DiodeN("diode", p, "right", 5));
+                    }
+                }
 
                 n++;
             } else {
