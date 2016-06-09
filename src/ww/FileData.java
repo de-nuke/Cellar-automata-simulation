@@ -60,15 +60,19 @@ public class FileData {
                         elementes.add(new Wire("wire", p, "right", 3));
                     } break;
                     case "diodenormal": {
+                        elementes.add(new DiodeN("diodenormal", p, "right", 7));
                     }
                     case "diodereversed": {
+                        elementes.add(new DiodeR("diodereversed", p, "right", 7));
                     } break;
                     case "empty": {
                         elementes.add(new EmptyCell("empty", p, "right", 1));
                     } break;
                     case "electronhead": {
+                        elementes.add(new ElectronHead("electronhead", p, "right", 1));
                     } break;
                     case "electrontail": {
+                        elementes.add(new ElectronTail("electrontail", p, "right", 1));
                     } break;
                     case "orgate": {
                         elementes.add(new OrGate("orgate", p, "right", 10));

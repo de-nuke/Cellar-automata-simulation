@@ -5,7 +5,10 @@
  */
 package ww;
 
+import elements.*;
+import elements.Wire;
 import java.awt.*;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -15,7 +18,10 @@ import java.util.*;
 public class Board {
     
     Map<Point, Color> board = new HashMap<>();
-    
+    Integer[][] boardInts;
+    public Board(int width, int height) {
+        boardInts = new Integer[width][height];
+    }
 //    public void putFileData(FileData fd) {
 //        int n = fd.getNumberOfElements();
 //        for(int i = 0; i < n; i++) {
@@ -23,4 +29,88 @@ public class Board {
 //        }
 //        
 //    }
+    public void addData(FileData fd) {
+        ArrayList<Element> elementList = fd.getElementsArrayList();
+        int n = elementList.size(); //number of elements
+        for(Element e : elementList) {
+            insertElement(boardInts, e);
+        }
+    }
+    
+    private void insertElement(Integer[][] board, Element e) {
+
+        switch (e.getName()) {
+            case "wire": {
+                for(int i = 0 ; i < e.getNumberOfCells(); i++) {
+                    
+                }
+            }
+            break;
+            case "diodenormal": {
+                
+            }
+            case "diodereversed": {
+               
+            }
+            break;
+            case "empty": {
+                
+            }
+            break;
+            case "electronhead": {
+                
+            }
+            break;
+            case "electrontail": {
+                
+            }
+            break;
+            case "orgate": {
+                
+            }
+            break;
+            case "xorgate": {
+                
+            }
+            break;
+            case "andgate": {
+                
+            }
+            break;
+            case "notgate": {
+                
+            }
+            break;
+            default:
+                
+        }
+
+    }
 }
+
+
+
+
+
+
+       /*        if (e instanceof Wire) {
+        Wire wire = (Wire) e;
+        } else if (e instanceof EmptyCell) {
+        EmptyCell emptyCell = (EmptyCell) e;
+        } else if (e instanceof ElectronHead) {
+        ElectronHead electronHead = (ElectronHead) e;
+        } else if (e instanceof ElectronTail) {
+        ElectronTail electronTail= (ElectronTail) e;
+        } else if (e instanceof DiodeN) {
+        DiodeN diodeN = (DiodeN) e;
+        } else if (e instanceof DiodeR) {
+        DiodeR diodeR = (DiodeR) e;
+        } else if (e instanceof OrGate) {
+        OrGate orGate = (OrGate) e;
+        } else if (e instanceof XorGate) {
+        XorGate xorGate = (XorGate) e;
+        } else if (e instanceof AndGate) {
+        AndGate andGate = (AndGate) e;
+        } else if (e instanceof NotGate) {
+        NotGate notGate = (NotGate) e;
+        }*/
