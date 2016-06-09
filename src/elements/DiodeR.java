@@ -16,7 +16,7 @@ public class DiodeR extends Element {
     int length;
     
     public DiodeR(String n, Point p, String direction, int length ) {
-        super(n,p, 6*3); //6 -width, 3 - height
+        super(n,p, 6*3, 6, 3); //6 -width, 3 - height
         this.direction = direction;
         this.length = length;
     }

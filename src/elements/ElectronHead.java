@@ -5,6 +5,7 @@
  */
 package elements;
 
+import com.sun.prism.paint.Color;
 import java.awt.Point;
 
 /**
@@ -12,13 +13,10 @@ import java.awt.Point;
  * @author Dom
  */
 public class ElectronHead extends Element{
-    String direction;
-    int length;
     
-    public ElectronHead(String n, Point p, String direction, int length ) {
-        super(n,p, length);
-        this.direction = direction;
-        this.length = length;
+    Color color = Color.RED;
+    public ElectronHead(String n, Point p) {
+        super(n,p, 1, 1 ,1);
     }
     
 }

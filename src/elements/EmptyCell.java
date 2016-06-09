@@ -16,7 +16,7 @@ public class EmptyCell extends Element {
     int length;
     
     public EmptyCell(String n, Point p, String direction, int length ) {
-        super(n,p,1); //niech sie da okreslax ile na ile ma byc wstawionych pustych
+        super(n,p,1,1,1); //niech sie da okreslax ile na ile ma byc wstawionych pustych
         this.direction = direction;
         this.length = length;
     }

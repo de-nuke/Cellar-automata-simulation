@@ -16,7 +16,7 @@ public class AndGate extends Element {
     int length;
     
     public AndGate(String n, Point p, String direction, int length ) { //Te duże struktury nie będa mialy lenghta
-        super(n,p, 15*8); //15 is a width of andgate, 8 is height
+        super(n,p, 15*8, 15, 8); //15 is a width of andgate, 8 is height
         this.direction = direction;
         this.length = length;
     }

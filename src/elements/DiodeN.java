@@ -12,13 +12,21 @@ import java.awt.Point;
  * @author Dom
  */
 public class DiodeN extends Element {
-    String direction;
-    int length;
+
+
+    int diodeCellsX[][];
     
-    public DiodeN(String n, Point p, String direction, int length ) {
-        super(n,p, 6*3); //6 -width, 3 - height
-        this.direction = direction;
-        this.length = length;
+    public DiodeN(String n, Point p) {
+        super(n,p, 6*3, 6, 3); //6 -width, 3 - height
+        diodeCellsX = new int[][] {
+        {0,0,1,1,0,0},
+        {1,1,1,0,1,1},
+        {0,0,1,1,0,0}
+    };
     }
-    
+   
+
+    public int[][] getArray() {
+        return diodeCellsX;
+    }
 }

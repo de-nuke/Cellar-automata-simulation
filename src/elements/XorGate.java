@@ -16,7 +16,7 @@ public class XorGate extends Element {
     int length;
     
     public XorGate(String n, Point p, String direction, int length ) {
-        super(n,p, 10*7);
+        super(n,p, 10*7, 10, 7);
         this.direction = direction;
         this.length = length;
     }

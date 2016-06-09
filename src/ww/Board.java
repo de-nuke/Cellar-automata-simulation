@@ -6,9 +6,7 @@
 package ww;
 
 import elements.*;
-import elements.Wire;
 import java.awt.*;
-import java.io.IOException;
 import java.util.*;
 
 /**
@@ -33,11 +31,11 @@ public class Board {
         ArrayList<Element> elementList = fd.getElementsArrayList();
         int n = elementList.size(); //number of elements
         for(Element e : elementList) {
-            insertElement(boardInts, e);
+            insertElement(e);
         }
     }
     
-    private void insertElement(Integer[][] board, Element e) {
+    private void insertElement(Element e) {
 
         switch (e.getName()) {
             case "wire": {
@@ -47,7 +45,15 @@ public class Board {
             }
             break;
             case "diodenormal": {
-                
+                DiodeN diodeN = (DiodeN) e;
+                int[][] diodeArray = diodeN.getArray();
+                int posX = e.getPosition().x;
+                int posY = e.getPosition().y;
+                for(int i = 0; i < e.getHeight(); i++) {
+                    for(int j = 0; j < e.getWidth(); j++) {
+                        boardInts[i+posX][j+posX] = diodeArray[i][j];
+                    }
+                }
             }
             case "diodereversed": {
                

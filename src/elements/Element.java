@@ -15,11 +15,16 @@ public class Element {
     String name;
     Point position; //left, upper corner
     int numberOfCells;
+    int width;
+    int height;
+
     
-    public Element(String n, Point p, int numberOfCells) {
+    public Element(String n, Point p, int numberOfCells, int w, int h) {
         this.name = n;
         this.position = p;
         this.numberOfCells = numberOfCells;
+        this.width = w;
+        this.height = h;
     }
     
     public String getName() {
@@ -32,5 +37,12 @@ public class Element {
     
     public int getNumberOfCells() {
         return numberOfCells;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+    public int getHeight() {
+        return height;
     }
 }

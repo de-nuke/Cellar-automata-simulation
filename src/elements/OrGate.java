@@ -16,7 +16,7 @@ public class OrGate extends Element {
     int length;
     
     public OrGate(String n, Point p, String direction, int length ) {
-        super(n,p, 7*5);//7 -width, 5 - height
+        super(n,p, 7*5, 7, 5);//7 -width, 5 - height
         this.direction = direction;
         this.length = length;
     }

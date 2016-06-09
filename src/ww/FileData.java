@@ -57,10 +57,10 @@ public class FileData {
                 Point p = new Point(Integer.parseInt(lineParts[1]), Integer.parseInt(lineParts[2]));
                 switch(lineParts[0]) {
                     case "wire": {
-                        elementes.add(new Wire("wire", p, "right", 3));
+                        elementes.add(new Wire("wire", p));
                     } break;
                     case "diodenormal": {
-                        elementes.add(new DiodeN("diodenormal", p, "right", 7));
+                        elementes.add(new DiodeN("diodenormal", p));
                     }
                     case "diodereversed": {
                         elementes.add(new DiodeR("diodereversed", p, "right", 7));
@@ -69,10 +69,10 @@ public class FileData {
                         elementes.add(new EmptyCell("empty", p, "right", 1));
                     } break;
                     case "electronhead": {
-                        elementes.add(new ElectronHead("electronhead", p, "right", 1));
+                        elementes.add(new ElectronHead("electronhead", p));
                     } break;
                     case "electrontail": {
-                        elementes.add(new ElectronTail("electrontail", p, "right", 1));
+                        elementes.add(new ElectronTail("electrontail", p));
                     } break;
                     case "orgate": {
                         elementes.add(new OrGate("orgate", p, "right", 10));
