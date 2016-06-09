@@ -15,13 +15,20 @@ public class Wire extends Element {
     
     String direction;
     int length;
+    int[] wireCells;
     
     public Wire(String n, Point p, String direction, int length ) {
-        super(n,p);
+        super(n,p, length);
         this.direction = direction;
         this.length = length;
+        wireCells = new int[length];
+        for(int i = 0, k = 0; i < length; i++) {
+            wireCells[i] = k;
+            if(direction.equals("right"))k++;
+        }
+        
+        
     }
-    
     
     
 }

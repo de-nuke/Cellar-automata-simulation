@@ -16,7 +16,7 @@ public class ElectronTail extends Element{
     int length;
     
     public ElectronTail(String n, Point p, String direction, int length ) {
-        super(n,p);
+        super(n,p, length);
         this.direction = direction;
         this.length = length;
     }

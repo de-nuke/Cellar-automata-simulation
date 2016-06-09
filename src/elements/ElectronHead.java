@@ -16,7 +16,7 @@ public class ElectronHead extends Element{
     int length;
     
     public ElectronHead(String n, Point p, String direction, int length ) {
-        super(n,p);
+        super(n,p, length);
         this.direction = direction;
         this.length = length;
     }

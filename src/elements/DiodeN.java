@@ -16,7 +16,7 @@ public class DiodeN extends Element {
     int length;
     
     public DiodeN(String n, Point p, String direction, int length ) {
-        super(n,p);
+        super(n,p, 6*3); //6 -width, 3 - height
         this.direction = direction;
         this.length = length;
     }

@@ -14,10 +14,12 @@ import java.awt.Point;
 public class Element {
     String name;
     Point position; //left, upper corner
+    int numberOfCells;
     
-    public Element(String n, Point p) {
+    public Element(String n, Point p, int numberOfCells) {
         this.name = n;
         this.position = p;
+        this.numberOfCells = numberOfCells;
     }
     
     public String getName() {
@@ -26,5 +28,9 @@ public class Element {
     
     public Point getPosition() {
         return position;
+    }
+    
+    public int getNumberOfCells() {
+        return numberOfCells;
     }
 }

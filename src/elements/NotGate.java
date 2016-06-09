@@ -16,7 +16,7 @@ public class NotGate extends Element {
     int length;
     
     public NotGate(String n, Point p, String direction, int length ) {
-        super(n,p);
+        super(n,p, 8*5); //8 -width, 5 - height
         this.direction = direction;
         this.length = length;
     }

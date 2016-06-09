@@ -5,7 +5,7 @@
  */
 package ww;
 
-import elements.DiodeN;
+import elements.*;
 import elements.Element;
 import elements.Wire;
 import java.awt.Point;
@@ -60,8 +60,30 @@ public class FileData {
                         elementes.add(new Wire("wire", p, "right", 3));
                     } break;
                     case "diodenormal": {
-                        elementes.add(new DiodeN("diode", p, "right", 5));
                     }
+                    case "diodereversed": {
+                    } break;
+                    case "empty": {
+                        elementes.add(new EmptyCell("empty", p, "right", 1));
+                    } break;
+                    case "electronhead": {
+                    } break;
+                    case "electrontail": {
+                    } break;
+                    case "orgate": {
+                        elementes.add(new OrGate("orgate", p, "right", 10));
+                    } break;
+                    case "xorgate": {
+                        elementes.add(new XorGate("xorgate", p, "right", 10));
+                    } break;
+                    case "andgate": {
+                        elementes.add(new AndGate("andgate", p, "right", 20));
+                    } break;
+                    case "notgate": {
+                        elementes.add(new NotGate("notgate", p, "right", 10));
+                    } break;
+                    default:
+                        throw new IOException("Unknown element" + lineParts[0]);
                 }
 
                 n++;
@@ -73,6 +95,13 @@ public class FileData {
 
     }
 
+    public ArrayList<Element> getElementsArrayList() {
+        return elementes;
+    }
+    
+    public Element getElementNr(int i) {
+        return elementes.get(i);
+    }
     public String getElementNameAt(int elementIndex) {
         if (elementIndex < 0 || elementIndex >= elements.size()) {
             throw new IndexOutOfBoundsException("Index " + elementIndex + "is out of bounds.");
