@@ -12,13 +12,21 @@ import java.awt.Point;
  * @author Dom
  */
 public class OrGate extends Element {
-    String direction;
-    int length;
-    
-    public OrGate(String n, Point p, String direction, int length ) {
-        super(n,p, 7*5, 7, 5);//7 -width, 5 - height
-        this.direction = direction;
-        this.length = length;
+
+    int gateCells[][];
+
+    public OrGate(String n, Point p) {
+        super(n, p, 7 * 5, 7, 5); //6 -width, 3 - height
+        gateCells = new int[][]{
+            {0, 0, 1, 1, 0, 0, 0},
+            {1, 1, 0, 0, 1, 0, 0},
+            {0, 0, 0, 1, 1, 1, 1},
+            {1, 1, 0, 0, 1, 0, 0},
+            {0, 0, 1, 1, 0, 0, 0}
+        };
     }
-    
+
+    public int[][] getCellsArray() {
+        return gateCells;
+    }
 }

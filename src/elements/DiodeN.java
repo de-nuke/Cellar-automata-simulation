@@ -13,20 +13,18 @@ import java.awt.Point;
  */
 public class DiodeN extends Element {
 
-
     int diodeCellsX[][];
-    
-    public DiodeN(String n, Point p) {
-        super(n,p, 6*3, 6, 3); //6 -width, 3 - height
-        diodeCellsX = new int[][] {
-        {0,0,1,1,0,0},
-        {1,1,1,0,1,1},
-        {0,0,1,1,0,0}
-    };
-    }
-   
 
-    public int[][] getArray() {
+    public DiodeN(String n, Point p) {
+        super(n, p, 6 * 3, 6, 3); //6 -width, 3 - height
+        diodeCellsX = new int[][]{
+            {0, 0, 1, 1, 0, 0},
+            {1, 1, 1, 0, 1, 1},
+            {0, 0, 1, 1, 0, 0}
+        };
+    }
+
+    public int[][] getCellsArray() {
         return diodeCellsX;
     }
 }

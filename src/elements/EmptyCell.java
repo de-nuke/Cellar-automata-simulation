@@ -12,13 +12,21 @@ import java.awt.Point;
  * @author Dom
  */
 public class EmptyCell extends Element {
-    String direction;
-    int length;
     
-    public EmptyCell(String n, Point p, String direction, int length ) {
-        super(n,p,1,1,1); //niech sie da okreslax ile na ile ma byc wstawionych pustych
-        this.direction = direction;
-        this.length = length;
+    int[][]emptyCells;
+    
+    public EmptyCell(String n, Point p,int width, int height ) {
+        super(n,p,width*height,width,height); //niech sie da okreslax ile na ile ma byc wstawionych pustych
+        emptyCells = new int[height][width];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                emptyCells[i][j] = 0;
+            }
+        }
+    }
+    
+    public int[][] getCellsArray() {
+        return emptyCells;
     }
     
 }

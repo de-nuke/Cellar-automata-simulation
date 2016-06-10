@@ -15,8 +15,19 @@ import java.awt.Point;
 public class ElectronTail extends Element{
     
     Color color = Color.RED;
-    public ElectronTail(String n, Point p) {
-        super(n,p, 1, 1, 1);
+    int[][] electronCells;
+    
+    public ElectronTail(String n, Point p, int width, int height) {
+        super(n,p, width*height, width, height);
+        electronCells = new int[height][width];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                electronCells[i][j] = 2;
+            }
+        }
     }
-     
+
+    public int[][] getCellsArray() {
+        return electronCells;
+    }
 }

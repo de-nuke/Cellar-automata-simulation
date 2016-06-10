@@ -12,13 +12,19 @@ import java.awt.Point;
  * @author Dom
  */
 public class DiodeR extends Element {
-    String direction;
-    int length;
-    
-    public DiodeR(String n, Point p, String direction, int length ) {
-        super(n,p, 6*3, 6, 3); //6 -width, 3 - height
-        this.direction = direction;
-        this.length = length;
+
+    int diodeCellsX[][];
+
+    public DiodeR(String n, Point p) {
+        super(n, p, 6 * 3, 6, 3); //6 -width, 3 - height
+        diodeCellsX = new int[][]{
+            {0, 0, 1, 1, 0, 0},
+            {1, 1, 0, 1, 1, 1},
+            {0, 0, 1, 1, 0, 0}
+        };
     }
-    
+
+    public int[][] getCellsArray() {
+        return diodeCellsX;
+    }
 }

@@ -1,9 +1,9 @@
 wire 0 1
 electronhead 9 10
-electrontail 2 400
-orgate 1 100
-xorgate 109 109
-andgate 0 11
+electrontail 2 40
+orgate 1 10
+xorgate 19 19
+andgate 20 11
 wire 0 2
 wire 1 2
 wire 2 2

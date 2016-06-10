@@ -14,9 +14,22 @@ import java.awt.Point;
  */
 public class Wire extends Element {
 
+    int[][] wireCells;
+
     Color color = Color.BLACK;
-    public Wire(String n, Point p) {
-        super(n, p, 1,1,1); //wire is one, black cell. That's all.
+
+    public Wire(String n, Point p, int width, int height) {
+        super(n, p, width * height, width, height); //wire can be rectangle made of... wire. That's it.\
+        wireCells = new int[height][width];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                wireCells[i][j] = 1;
+            }
+        }
+    }
+
+    public int[][] getCellsArray() {
+        return wireCells;
     }
 
 }

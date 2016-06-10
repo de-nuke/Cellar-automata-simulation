@@ -6,7 +6,6 @@
 package ww;
 
 import elements.*;
-import java.awt.*;
 import java.util.*;
 
 /**
@@ -14,83 +13,199 @@ import java.util.*;
  * @author Dom
  */
 public class Board {
+
+     public static final String ANSI_RESET = "\u001B[0m";
+     public static final String ANSI_BLACK = "\u001B[30m";
+     public static final String ANSI_RED = "\u001B[31m";
+     public static final String ANSI_GREEN = "\u001B[32m";
+     public static final String ANSI_YELLOW = "\u001B[33m";
+     public static final String ANSI_BLUE = "\u001B[34m";
+     public static final String ANSI_PURPLE = "\u001B[35m";
+     public static final String ANSI_CYAN = "\u001B[36m";
+     public static final String ANSI_WHITE = "\u001B[37m";
     
-    Map<Point, Color> board = new HashMap<>();
     Integer[][] boardInts;
+    int width, height;
+
     public Board(int width, int height) {
         boardInts = new Integer[width][height];
+        this.width = width;
+        this.height = height;
+        
+        initializeBoard();
     }
-//    public void putFileData(FileData fd) {
-//        int n = fd.getNumberOfElements();
-//        for(int i = 0; i < n; i++) {
-//            
-//        }
-//        
-//    }
+
     public void addData(FileData fd) {
         ArrayList<Element> elementList = fd.getElementsArrayList();
-        int n = elementList.size(); //number of elements
+
         for(Element e : elementList) {
             insertElement(e);
         }
+    }
+    
+    @Override
+    public String toString() {
+
+        String text = "";
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if(null != boardInts[i][j]) switch (boardInts[i][j]) {
+                    case 0:
+                        text += ANSI_WHITE + boardInts[i][j].toString() + ANSI_RESET;
+                        break;
+                    case 1:
+                        text += ANSI_PURPLE + boardInts[i][j].toString() + ANSI_RESET;
+                        break;
+                    case 2:
+                        text += ANSI_BLUE + boardInts[i][j].toString() + ANSI_RESET;
+                        break;
+                    case 3:
+                        text += ANSI_RED + boardInts[i][j].toString() + ANSI_RESET;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            text += "\n";
+        }
+        return text;
     }
     
     private void insertElement(Element e) {
 
         switch (e.getName()) {
             case "wire": {
-                for(int i = 0 ; i < e.getNumberOfCells(); i++) {
-                    
+                Wire wire = (Wire) e;
+                int[][] wireArray = wire.getCellsArray();
+                int posX = e.getPosition().x;
+                int posY = e.getPosition().y;
+                for(int i = 0; i < e.getHeight(); i++) {
+                    for(int j = 0; j < e.getWidth(); j++) {
+                        boardInts[i+posY][j+posX] = wireArray[i][j];
+                    }
                 }
             }
             break;
             case "diodenormal": {
                 DiodeN diodeN = (DiodeN) e;
-                int[][] diodeArray = diodeN.getArray();
+                int[][] diodeArray = diodeN.getCellsArray();
                 int posX = e.getPosition().x;
                 int posY = e.getPosition().y;
                 for(int i = 0; i < e.getHeight(); i++) {
                     for(int j = 0; j < e.getWidth(); j++) {
-                        boardInts[i+posX][j+posX] = diodeArray[i][j];
+                        boardInts[i+posY][j+posX] = diodeArray[i][j];
                     }
                 }
             }
             case "diodereversed": {
-               
+                DiodeR diodeR = (DiodeR) e;
+                int[][] diodeArray = diodeR.getCellsArray();
+                int posX = e.getPosition().x;
+                int posY = e.getPosition().y;
+                for(int i = 0; i < e.getHeight(); i++) {
+                    for(int j = 0; j < e.getWidth(); j++) {
+                        boardInts[i+posY][j+posX] = diodeArray[i][j];
+                    }
+                }               
             }
             break;
             case "empty": {
+                EmptyCell emptyCells = (EmptyCell) e;
+                int[][] emptyCellsArray = emptyCells.getCellsArray();
+                int posX = e.getPosition().x;
+                int posY = e.getPosition().y;
+                for(int i = 0; i < e.getHeight(); i++) {
+                    for(int j = 0; j < e.getWidth(); j++) {
+                        boardInts[i+posY][j+posX] = emptyCellsArray[i][j];
+                    }
+                }
                 
             }
             break;
             case "electronhead": {
-                
+                ElectronHead electronHead = (ElectronHead) e;
+                int[][] electronHeadArray = electronHead.getCellsArray();
+                int posX = e.getPosition().x;
+                int posY = e.getPosition().y;
+                for(int i = 0; i < e.getHeight(); i++) {
+                    for(int j = 0; j < e.getWidth(); j++) {
+                        boardInts[i+posY][j+posX] = electronHeadArray[i][j];
+                    }
+                }
             }
             break;
             case "electrontail": {
-                
+                ElectronTail electronTail = (ElectronTail) e;
+                int[][] electronTailArray = electronTail.getCellsArray();
+                int posX = e.getPosition().x;
+                int posY = e.getPosition().y;
+                for(int i = 0; i < e.getHeight(); i++) {
+                    for(int j = 0; j < e.getWidth(); j++) {
+                        boardInts[i+posY][j+posX] = electronTailArray[i][j];
+                    }
+                }
             }
             break;
             case "orgate": {
-                
+                OrGate orGate = (OrGate) e;
+                int[][] gateArray = orGate.getCellsArray();
+                int posX = e.getPosition().x;
+                int posY = e.getPosition().y;
+                for(int i = 0; i < e.getHeight(); i++) {
+                    for(int j = 0; j < e.getWidth(); j++) {
+                        boardInts[i+posY][j+posX] = gateArray[i][j];
+                    }
+                }   
             }
             break;
             case "xorgate": {
-                
+                XorGate xorGate = (XorGate) e;
+                int[][] gateArray = xorGate.getCellsArray();
+                int posX = e.getPosition().x;
+                int posY = e.getPosition().y;
+                for(int i = 0; i < e.getHeight(); i++) {
+                    for(int j = 0; j < e.getWidth(); j++) {
+                        boardInts[i+posY][j+posX] = gateArray[i][j];
+                    }
+                }   
             }
             break;
             case "andgate": {
-                
+                AndGate andGate = (AndGate) e;
+                int[][] gateArray = andGate.getCellsArray();
+                int posX = e.getPosition().x;
+                int posY = e.getPosition().y;
+                for(int i = 0; i < e.getHeight(); i++) {
+                    for(int j = 0; j < e.getWidth(); j++) {
+                        boardInts[i+posY][j+posX] = gateArray[i][j];
+                    }
+                }   
             }
             break;
             case "notgate": {
-                
+                NotGate notGate = (NotGate) e;
+                int[][] gateArray = notGate.getCellsArray();
+                int posX = e.getPosition().x;
+                int posY = e.getPosition().y;
+                for(int i = 0; i < e.getHeight(); i++) {
+                    for(int j = 0; j < e.getWidth(); j++) {
+                        boardInts[i+posY][j+posX] = gateArray[i][j];
+                    }
+                }   
             }
             break;
             default:
                 
         }
 
+    }
+
+    private void initializeBoard() {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                boardInts[i][j] = 0;
+            }
+        }
     }
 }
 

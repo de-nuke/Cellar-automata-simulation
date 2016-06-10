@@ -12,13 +12,23 @@ import java.awt.Point;
  * @author Dom
  */
 public class XorGate extends Element {
-    String direction;
-    int length;
-    
-    public XorGate(String n, Point p, String direction, int length ) {
-        super(n,p, 10*7, 10, 7);
-        this.direction = direction;
-        this.length = length;
+
+    int gateCells[][];
+
+    public XorGate(String n, Point p) {
+        super(n, p, 10 * 7, 10, 7); //6 -width, 3 - height
+        gateCells = new int[][]{
+            {0, 0, 0, 1, 1, 0, 0, 0, 0, 0},
+            {0, 0, 1, 0, 0, 1, 0, 0, 0, 0},
+            {1, 1, 0, 0, 1, 1, 1, 1, 0, 0},
+            {0, 0, 0, 0, 1, 0, 1, 1, 1, 1},
+            {1, 1, 0, 0, 1, 1, 1, 1, 0, 0},
+            {0, 0, 1, 0, 0, 1, 0, 0, 0, 0},
+            {0, 0, 0, 1, 1, 0, 0, 0, 0, 0}
+        };
     }
-    
+
+    public int[][] getCellsArray() {
+        return gateCells;
+    }
 }

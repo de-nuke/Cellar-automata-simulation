@@ -45,4 +45,9 @@ public class Element {
     public int getHeight() {
         return height;
     }
+    
+    @Override
+    public String toString() {
+        return name + "( "+ position.x + "," + position.y + " ) - Dimensions:  " + width + " x " + height;
+    }
 }

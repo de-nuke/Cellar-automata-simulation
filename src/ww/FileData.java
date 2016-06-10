@@ -57,34 +57,34 @@ public class FileData {
                 Point p = new Point(Integer.parseInt(lineParts[1]), Integer.parseInt(lineParts[2]));
                 switch(lineParts[0]) {
                     case "wire": {
-                        elementes.add(new Wire("wire", p));
+                        elementes.add(new Wire("wire", p, 1,1));
                     } break;
                     case "diodenormal": {
                         elementes.add(new DiodeN("diodenormal", p));
                     }
                     case "diodereversed": {
-                        elementes.add(new DiodeR("diodereversed", p, "right", 7));
+                        elementes.add(new DiodeR("diodereversed", p));
                     } break;
                     case "empty": {
-                        elementes.add(new EmptyCell("empty", p, "right", 1));
+                        elementes.add(new EmptyCell("empty", p, 1, 1));
                     } break;
                     case "electronhead": {
-                        elementes.add(new ElectronHead("electronhead", p));
+                        elementes.add(new ElectronHead("electronhead", p, 1,1));
                     } break;
                     case "electrontail": {
-                        elementes.add(new ElectronTail("electrontail", p));
+                        elementes.add(new ElectronTail("electrontail", p, 1, 1));
                     } break;
                     case "orgate": {
-                        elementes.add(new OrGate("orgate", p, "right", 10));
+                        elementes.add(new OrGate("orgate", p));
                     } break;
                     case "xorgate": {
-                        elementes.add(new XorGate("xorgate", p, "right", 10));
+                        elementes.add(new XorGate("xorgate", p));
                     } break;
                     case "andgate": {
-                        elementes.add(new AndGate("andgate", p, "right", 20));
+                        elementes.add(new AndGate("andgate", p));
                     } break;
                     case "notgate": {
-                        elementes.add(new NotGate("notgate", p, "right", 10));
+                        elementes.add(new NotGate("notgate", p));
                     } break;
                     default:
                         throw new IOException("Unknown element" + lineParts[0]);
@@ -175,9 +175,9 @@ public class FileData {
 
     @Override
     public String toString() {
-        String text = "FileData has succesfully read " + n + " elements: \n";
-        for(int i = 0; i < n; i++) {
-            text += elements.get(i) + " (" + coordinates.get(i).x + "," + coordinates.get(i).y + ") \n";
+        String text = "FileData has succesfully read " + elementes.size() + " elements: \n";
+        for(Element e : elementes) {
+            text += e.toString()+"\n";
         }
         return text;
     }

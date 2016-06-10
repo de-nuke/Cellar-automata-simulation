@@ -6,6 +6,7 @@
 package tests;
 
 import java.io.File;
+import ww.Board;
 import ww.FileData;
 
 /**
@@ -17,16 +18,14 @@ public class TestFileData {
     public static void main(String[] args) {
         
         FileData fd1 = new FileData(new File("data.txt"));
+        Board b = new Board(100,100);
+        b.addData(fd1);
+        
+        System.out.println("WYPISUJE FILEDATA: \n");
         System.out.println(fd1.toString());
         
-        FileData fd2 = new FileData(new File("wrongdata.txt"));
-        System.out.println(fd2.toString());
-        
-        FileData fd3 = new FileData(new File("wrongelement.txt"));
-        System.out.println(fd3.toString());
-        
-        FileData fd4 = new FileData(new File("wrongpoint.txt"));
-        System.out.println(fd4.toString());
+        System.out.println("WYPISUJE BOARD: \n");
+        System.out.println(b.toString());
         
     }
 }

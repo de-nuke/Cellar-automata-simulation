@@ -12,13 +12,20 @@ import java.awt.Point;
  * @author Dom
  */
 public class NotGate extends Element {
-    String direction;
-    int length;
-    
-    public NotGate(String n, Point p, String direction, int length ) {
-        super(n,p, 8*5, 8, 5); //8 -width, 5 - height
-        this.direction = direction;
-        this.length = length;
+    int gateCells[][];
+
+    public NotGate(String n, Point p) {
+        super(n, p, 8 * 5, 8, 5); //6 -width, 3 - height
+        gateCells = new int[][]{
+            {0, 0, 1, 1, 0, 0, 0, 0},
+            {1, 1, 0, 0, 1, 0, 1, 1},
+            {0, 0, 0, 3, 3, 3, 0, 0},
+            {0, 0, 2, 0, 2, 2, 0, 0},
+            {0, 0, 1, 3, 1, 0, 0, 0}
+        };
     }
-    
+
+    public int[][] getCellsArray() {
+        return gateCells;
+    }
 }

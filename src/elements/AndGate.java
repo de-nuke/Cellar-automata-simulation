@@ -12,13 +12,24 @@ import java.awt.Point;
  * @author Dom
  */
 public class AndGate extends Element {
-    String direction;
-    int length;
-    
-    public AndGate(String n, Point p, String direction, int length ) { //Te duże struktury nie będa mialy lenghta
-        super(n,p, 15*8, 15, 8); //15 is a width of andgate, 8 is height
-        this.direction = direction;
-        this.length = length;
+
+    int gateCells[][];
+
+    public AndGate(String n, Point p) {
+        super(n, p, 15 * 8, 15, 8); //6 -width, 3 - height
+        gateCells = new int[][]{
+            {1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0},
+            {1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0},
+            {0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0},
+            {0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
+            {0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1},
+            {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+        };
     }
-    
+
+    public int[][] getCellsArray() {
+        return gateCells;
+    }
 }
