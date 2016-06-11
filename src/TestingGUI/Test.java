@@ -28,11 +28,9 @@ public class Test {
             @Override
             public void run() {
                 m = new MainWindow();
-                p = new Panel(400,40, 40);
-                p2 = new Panel(300, 300, 6);
+                p = new Panel(400, 400, 50);
                 m.add(p, BorderLayout.NORTH);
-                m.add(p2, BorderLayout.CENTER);
-                m.pack();
+                //m.pack();
             }
 
         });

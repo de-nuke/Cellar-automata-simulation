@@ -3,45 +3,45 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TestingGUI;
+package GUI;
 
 import java.awt.*;
-import java.io.*;
+import java.io.File;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import ww.*;
-
+import ww.Board;
+import ww.FileData;
 
 /**
  *
  * @author Dom
  */
-public class Panel extends JPanel {
-    
-    int panelWidth;
-    int panelHeight;
-    Integer [][]brd;
-    int n;
-    public Panel(int w, int h, int n) {
+public class BoardPanel extends JPanel {
 
-//      ExampleBoard b = new ExampleBoard(n);
-//      brd = b.getArray();
-        Board b = new Board(w,h);
+    int pWidth;
+    int pHeight;
+    Integer [][]brd;
+    int nH = 90; //number of cells horizontally
+    int nV = 107; //number of cells vertically
+    int rectWidth;
+    int rectHeight;
+    
+    public BoardPanel(int w, int h, Color c) {
+        this.pHeight = h;
+        this.pWidth = w;
+        setBackground(c);
+        Board b = new Board(nH, nV);
         b.addData(new FileData(new File("data.txt")));
         brd = b.getArray();
-        panelWidth = w;
-        panelHeight = h;
-        this.n = n;
-        setBorder(new LineBorder(Color.RED));
-        setBackground(Color.gray);
-
-        
+        pWidth = w;
+        pHeight = h;
+        rectWidth = (int) pWidth/nV;
+        rectHeight = (int) pHeight/nV;
     }
-    
+
     @Override
-        public Dimension getPreferredSize() {
-            return new Dimension(panelWidth, panelHeight);
-        }
+    public Dimension getPreferredSize() {
+        return new Dimension(pWidth, pHeight);
+    }
     
     @Override
     protected void paintComponent(Graphics g) {
@@ -51,14 +51,13 @@ public class Panel extends JPanel {
         Color thirdColor = Color.BLUE;
         Color fourthColor = Color.RED;
         
-        int rectWidth = (int) panelWidth/n;
-        int rectHeight = (int) panelHeight/n;
+
         
 //        System.out.println("rectWidth = " + rectWidth);
 //        System.out.println("rectHeight = " + rectHeight);
         
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) {
+        for(int i = 0; i < nV; i++) {
+            for(int j = 0; j < nH; j++) {
                 if(brd[i][j] == 0) 
                     g.setColor(firstColor);
                 else if(brd[i][j] == 1)

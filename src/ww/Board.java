@@ -28,10 +28,10 @@ public class Board {
     int width, height;
 
     public Board(int width, int height) {
-        boardInts = new Integer[width][height];
+        boardInts = new Integer[height][width];
         this.width = width;
         this.height = height;
-        
+        System.out.println(this.width + ", " + this.height);
         initializeBoard();
     }
 
@@ -41,6 +41,10 @@ public class Board {
         for(Element e : elementList) {
             insertElement(e);
         }
+    }
+    
+    public Integer[][] getArray() {
+        return boardInts;
     }
     
     @Override
@@ -201,8 +205,10 @@ public class Board {
     }
 
     private void initializeBoard() {
+    System.out.println(width + ", " + height);
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
+                System.out.println(i + ", " + j);
                 boardInts[i][j] = 0;
             }
         }

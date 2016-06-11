@@ -1,6 +1,4 @@
 wire 0 1
-electronhead 9 10
-electrontail 2 40
 orgate 1 10
 xorgate 19 19
 andgate 20 11
@@ -11,3 +9,9 @@ wire 3 2
 wire 4 2
 wire 5 2
 wire 6 2
+electronhead 9 10
+electrontail 8 10
+wire 7 10
+wire 6 10
+wire 10 10
+wire 11 10
