@@ -23,7 +23,7 @@ public class Settings {
 
     Color gapsBetweenCellsColor;
 
-    int cellsPerHeight;
+    int cellSize;
     boolean repeatGeneration;
     boolean writeEveryFileToPng;
     boolean writeEveryFileToTxt;
@@ -36,7 +36,7 @@ public class Settings {
         String line;
         int i=0;
         try {
-            fr = new FileReader(new File("settings.wws"));
+            fr = new FileReader(new File("settings.txt"));
             br = new BufferedReader(fr);
 
             try {
@@ -60,7 +60,7 @@ public class Settings {
         etColor = setColor(s[2]);
         ehColor = setColor(s[3]);
         gapsBetweenCellsColor = setColor(s[4]);
-        cellsPerHeight = Integer.parseInt(s[5]);
+        cellSize = Integer.parseInt(s[5]);
         repeatGeneration = Boolean.parseBoolean(s[6]);
         writeEveryFileToPng = Boolean.parseBoolean(s[7]);
         writeEveryFileToTxt = Boolean.parseBoolean(s[8]);
@@ -100,8 +100,8 @@ public class Settings {
         return gapsBetweenCellsColor;
     }
 
-    public int getCellsPerHeight() {
-        return cellsPerHeight;
+    public int getCellSize() {
+        return cellSize;
     }
 
     public boolean isRepeatingGeneration() {
@@ -138,8 +138,8 @@ public class Settings {
         this.gapsBetweenCellsColor = gapsBetweenCellsColor;
     }
 
-    public void setCellsPerHeight(int cellsPerHeight) {
-        this.cellsPerHeight = cellsPerHeight;
+    public void setCellSize(int cellSize) {
+        this.cellSize = cellSize;
     }
 
     public void setRepeatGeneration(boolean repeatGeneration) {

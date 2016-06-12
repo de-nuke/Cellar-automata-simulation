@@ -6,6 +6,7 @@
 package tests;
 
 import java.io.File;
+import java.io.IOException;
 import ww.Board;
 import ww.FileData;
 
@@ -15,7 +16,7 @@ import ww.FileData;
  */
 public class TestFileData {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
         FileData fd1 = new FileData(new File("data.txt"));
         Board b = new Board(100,100);

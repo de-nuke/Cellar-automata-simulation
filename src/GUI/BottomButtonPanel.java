@@ -5,9 +5,8 @@
  */
 package GUI;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  *
@@ -17,6 +16,17 @@ public class BottomButtonPanel extends JPanel {
     
     int pWidth;
     int pHeight;
+    
+    JButton empty = new JButton("Empty");
+    JButton wire = new JButton("wire");
+    JButton eh = new JButton("ElectronHead");
+    JButton et = new JButton("ElectronTail");
+    JButton diodeN = new JButton("Diode Normal");
+    JButton diodeR = new JButton("Diode Reversed");
+    JButton orgate = new JButton("OR gate");
+    JButton xorgate = new JButton("XOR gate");
+    JButton andgate = new JButton("AND gate");
+    JButton notgate = new JButton("NOT gate");
     
     public BottomButtonPanel(int w, int h, Color c) {
         this.pHeight = h;

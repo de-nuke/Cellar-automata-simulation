@@ -11,14 +11,18 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 
 /**
  *
  * @author Dom
  */
-class RightButtonPanel extends JPanel {
+class RightButtonPanel extends JPanel implements ActionListener{
     
     int pWidth;
     int pHeight;
@@ -37,28 +41,34 @@ class RightButtonPanel extends JPanel {
         setLayout(new GridBagLayout());
         
         JPanel p1 = new JPanel(new FlowLayout());
-        p1.setPreferredSize(new Dimension(270, 184));
-        play.setPreferredSize(BIG_BTN);
-        p1.add(play);
-        singleStep.setPreferredSize(BIG_BTN);
-        p1.add(singleStep);
-        
         JPanel p2 = new JPanel(new FlowLayout());
-        p2.setPreferredSize(new Dimension(270, 60));
-        faster.setPreferredSize(SMALL_BTN);
-        p2.add(faster);
-        slower.setPreferredSize(SMALL_BTN);
-        p2.add(slower);
-        
-        
         JPanel p3 = new JPanel(new FlowLayout());
+        
+        p1.setPreferredSize(new Dimension(270, 184));
+        p2.setPreferredSize(new Dimension(270, 60));
         p3.setPreferredSize(new Dimension(270, 184));
+        
+        play.setPreferredSize(BIG_BTN);
+        play.addActionListener(this);
+        singleStep.setPreferredSize(BIG_BTN);
+        singleStep.addActionListener(this);
+        faster.setPreferredSize(SMALL_BTN);
+        faster.addActionListener(this);
+        slower.setPreferredSize(SMALL_BTN);
+        slower.addActionListener(this);
         loadFile.setPreferredSize(BIG_BTN);
-        p3.add(loadFile);
+        loadFile.addActionListener(this);
         settings.setPreferredSize(BIG_BTN);
+        settings.addActionListener(this);
+        
+        
+        p1.add(play);
+        p1.add(singleStep);
+        p2.add(faster);
+        p2.add(slower);
+        p3.add(loadFile);
         p3.add(settings);
         
-        //add(restart);
         GridBagConstraints con = new GridBagConstraints();
         con.fill = GridBagConstraints.HORIZONTAL;
         con.gridy = 0;
@@ -74,7 +84,16 @@ class RightButtonPanel extends JPanel {
     }
 
     @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(pWidth, pHeight);
+    public void actionPerformed(ActionEvent e) {
+        JButton btn = (JButton) e.getSource();
+
+        if (btn == loadFile) {
+            JFileChooser fc = new JFileChooser();
+            int returnVal = fc.showOpenDialog(null);
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                System.out.println("HURRA OTWORZYLEM PLIK");
+            }
+        }
     }
 }

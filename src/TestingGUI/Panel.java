@@ -22,7 +22,7 @@ public class Panel extends JPanel {
     int panelHeight;
     Integer [][]brd;
     int n;
-    public Panel(int w, int h, int n) {
+    public Panel(int w, int h, int n) throws IOException {
 
 //      ExampleBoard b = new ExampleBoard(n);
 //      brd = b.getArray();

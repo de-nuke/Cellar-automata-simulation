@@ -12,9 +12,11 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.io.IOException;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
+import ww.Settings;
 
 /**
  *
@@ -22,11 +24,12 @@ import javax.swing.UIManager.LookAndFeelInfo;
  */
 public class Main {
  
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         EventQueue.invokeLater(new Runnable() {
+            Settings settings = new Settings();
             WireWorldMainWindow m;
             JPanel rbp = new RightButtonPanel(RBP_WIDTH,RBP_HEIGHT,Color.red);
-            JPanel bp = new BoardPanel(BP_WIDTH,BP_HEIGHT,Color.blue);
+            JPanel bp = new BoardPanel(BP_WIDTH,BP_HEIGHT,Color.gray, settings);
             JPanel bbp = new BottomButtonPanel(BBP_WIDTH, BBP_HEIGHT,Color.green);
 
             @Override

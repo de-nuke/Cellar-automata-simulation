@@ -7,9 +7,12 @@ package GUI;
 
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import ww.Board;
 import ww.FileData;
+import ww.Settings;
 
 /**
  *
@@ -20,22 +23,29 @@ public class BoardPanel extends JPanel {
     int pWidth;
     int pHeight;
     Integer [][]brd;
-    int nH = 90; //number of cells horizontally
-    int nV = 107; //number of cells vertically
-    int rectWidth;
-    int rectHeight;
+    int nH; //number of cells horizontally
+    int nV; //number of cells vertically
+    int cellSize; //in pixels
+    Settings settings;
     
-    public BoardPanel(int w, int h, Color c) {
+    public BoardPanel(int w, int h, Color c, Settings s) throws IOException {
+        setBackground(c);
+        setBorder(new LineBorder(Color.BLACK));
+        this.settings = s;
         this.pHeight = h;
         this.pWidth = w;
-        setBackground(c);
+        
+        nH = (int)(w/settings.getCellSize());
+        nV = (int)(h/settings.getCellSize());
         Board b = new Board(nH, nV);
-        b.addData(new FileData(new File("data.txt")));
+        FileData fd = null;
+        fd = new FileData(new File("data.txt"));
+        b.addData(fd); 
+      
         brd = b.getArray();
-        pWidth = w;
-        pHeight = h;
-        rectWidth = (int) pWidth/nV;
-        rectHeight = (int) pHeight/nV;
+        cellSize = settings.getCellSize();
+
+        
     }
 
     @Override
@@ -46,10 +56,10 @@ public class BoardPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Color firstColor = Color.WHITE;
-        Color secondColor = Color.BLACK;
-        Color thirdColor = Color.BLUE;
-        Color fourthColor = Color.RED;
+        Color firstColor = settings.getEmptyCellColor();
+        Color secondColor = settings.getWireColor();
+        Color thirdColor = settings.getElectronTailColor();
+        Color fourthColor = settings.getElectronHeadColor();
         
 
         
@@ -66,7 +76,7 @@ public class BoardPanel extends JPanel {
                     g.setColor(thirdColor);
                 else if(brd[i][j] == 3)
                     g.setColor(fourthColor);
-                g.fillRect(j*rectWidth, i*rectHeight, rectWidth - 1, rectHeight - 1);
+                g.fillRect(j*cellSize, i*cellSize, cellSize-1 , cellSize-1 );
             }
         }
     }

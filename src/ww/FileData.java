@@ -5,6 +5,7 @@
  */
 package ww;
 
+import GUI.ErrorWindow;
 import elements.*;
 import elements.Element;
 import elements.Wire;
@@ -31,14 +32,10 @@ public class FileData {
 
     }
 
-    public FileData(File file) {
-        try {
+    public FileData(File file)
+            throws IOException {
+        
             readFromFile(file);
-        } catch (FileNotFoundException fx) {
-            System.err.println("IOException");
-        } catch (IOException ex) {
-            System.err.println("File Not Found");
-        }
     }
 
     public void readFromFile(File file)
@@ -55,45 +52,55 @@ public class FileData {
 //                elements.add(lineParts[0]);
 //                coordinates.add(new Point(Integer.parseInt(lineParts[1]), Integer.parseInt(lineParts[2])));
                 Point p = new Point(Integer.parseInt(lineParts[1]), Integer.parseInt(lineParts[2]));
-                switch(lineParts[0]) {
+                switch (lineParts[0]) {
                     case "wire": {
-                        elementes.add(new Wire("wire", p, 1,1));
-                    } break;
+                        elementes.add(new Wire("wire", p, 1, 1));
+                    }
+                    break;
                     case "diodenormal": {
                         elementes.add(new DiodeN("diodenormal", p));
                     }
                     case "diodereversed": {
                         elementes.add(new DiodeR("diodereversed", p));
-                    } break;
+                    }
+                    break;
                     case "empty": {
                         elementes.add(new EmptyCell("empty", p, 1, 1));
-                    } break;
+                    }
+                    break;
                     case "electronhead": {
-                        elementes.add(new ElectronHead("electronhead", p, 1,1));
-                    } break;
+                        elementes.add(new ElectronHead("electronhead", p, 1, 1));
+                    }
+                    break;
                     case "electrontail": {
                         elementes.add(new ElectronTail("electrontail", p, 1, 1));
-                    } break;
+                    }
+                    break;
                     case "orgate": {
                         elementes.add(new OrGate("orgate", p));
-                    } break;
+                    }
+                    break;
                     case "xorgate": {
                         elementes.add(new XorGate("xorgate", p));
-                    } break;
+                    }
+                    break;
                     case "andgate": {
                         elementes.add(new AndGate("andgate", p));
-                    } break;
+                    }
+                    break;
                     case "notgate": {
                         elementes.add(new NotGate("notgate", p));
-                    } break;
+                    }
+                    break;
                     default:
                         throw new IOException("Unknown element" + lineParts[0]);
                 }
 
                 n++;
             } else {
-                System.err.println("Wrong data format in line " + (n+1) + "!");
-                return;
+                System.err.println("Wrong data format in line " + (n + 1) + "!");
+                new ErrorWindow("Wrong data format in line " + (n + 1) + " !");
+                throw new IOException("Wrong data format");
             }
         }
 
@@ -102,10 +109,11 @@ public class FileData {
     public ArrayList<Element> getElementsArrayList() {
         return elementes;
     }
-    
+
     public Element getElementNr(int i) {
         return elementes.get(i);
     }
+
     public String getElementNameAt(int elementIndex) {
         if (elementIndex < 0 || elementIndex >= elements.size()) {
             throw new IndexOutOfBoundsException("Index " + elementIndex + "is out of bounds.");
@@ -121,11 +129,11 @@ public class FileData {
             return coordinates.get(pointIndex);
         }
     }
-    
+
     public Integer getNumberOfElements() {
         return n;
     }
-    
+
     private boolean isRecognized(String element) {
         return element.equals("diodenormal") || element.equals("diodereversed")
                 || element.equals("electronhead") || element.equals("electrontail")
@@ -176,12 +184,10 @@ public class FileData {
     @Override
     public String toString() {
         String text = "FileData has succesfully read " + elementes.size() + " elements: \n";
-        for(Element e : elementes) {
-            text += e.toString()+"\n";
+        for (Element e : elementes) {
+            text += e.toString() + "\n";
         }
         return text;
     }
-    
-    
-    
+
 }
