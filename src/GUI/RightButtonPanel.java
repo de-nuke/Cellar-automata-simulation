@@ -14,15 +14,18 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
-
 /**
  *
  * @author Dom
  */
-class RightButtonPanel extends JPanel implements ActionListener{
+public class RightButtonPanel extends JPanel implements ActionListener{
+    PanelsControl control;
     
     int pWidth;
     int pHeight;
@@ -33,6 +36,8 @@ class RightButtonPanel extends JPanel implements ActionListener{
     JButton loadFile = new JButton("Load file");
     JButton settings = new JButton("Settings");
     JButton restart = new JButton("Restart");
+    
+    File f;
     
     public RightButtonPanel(int w, int h, Color c) {
         this.pHeight = h;
@@ -86,14 +91,18 @@ class RightButtonPanel extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton btn = (JButton) e.getSource();
-
-        if (btn == loadFile) {
-            JFileChooser fc = new JFileChooser();
-            int returnVal = fc.showOpenDialog(null);
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                File file = fc.getSelectedFile();
-                System.out.println("HURRA OTWORZYLEM PLIK");
+        
+        if(btn == loadFile)
+            try {
+                control.loadFile();
+            } catch (IOException ex) {
+                System.out.println("WRONG FILE");
             }
-        }
+        if(btn == singleStep) 
+            control.singleStep();
+    }
+    
+    public void setControl(PanelsControl c) {
+        this.control = c;
     }
 }

@@ -6,13 +6,17 @@
 package GUI;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.*;
 
 /**
  *
  * @author Dom
  */
-public class BottomButtonPanel extends JPanel {
+public class BottomButtonPanel extends JPanel implements ActionListener{
+    PanelsControl control;
     
     int pWidth;
     int pHeight;
@@ -28,6 +32,8 @@ public class BottomButtonPanel extends JPanel {
     JButton andgate = new JButton("AND gate");
     JButton notgate = new JButton("NOT gate");
     
+    File f;
+    
     public BottomButtonPanel(int w, int h, Color c) {
         this.pHeight = h;
         this.pWidth = w;
@@ -38,4 +44,15 @@ public class BottomButtonPanel extends JPanel {
     public Dimension getPreferredSize() {
         return new Dimension(pWidth, pHeight);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setControl(PanelsControl control) {
+        this.control = control;
+    }
+   
+
 }

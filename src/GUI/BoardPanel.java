@@ -8,6 +8,8 @@ package GUI;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import ww.Board;
@@ -18,10 +20,13 @@ import ww.Settings;
  *
  * @author Dom
  */
-public class BoardPanel extends JPanel {
-
+public class BoardPanel extends JPanel{
+    PanelsControl control;
+            
     int pWidth;
     int pHeight;
+    File f;
+    Board b;
     Integer [][]brd;
     int nH; //number of cells horizontally
     int nV; //number of cells vertically
@@ -37,15 +42,9 @@ public class BoardPanel extends JPanel {
         
         nH = (int)(w/settings.getCellSize());
         nV = (int)(h/settings.getCellSize());
-        Board b = new Board(nH, nV);
-        FileData fd = null;
-        fd = new FileData(new File("data.txt"));
-        b.addData(fd); 
-      
+        b = new Board(nH, nV);
         brd = b.getArray();
         cellSize = settings.getCellSize();
-
-        
     }
 
     @Override
@@ -60,12 +59,7 @@ public class BoardPanel extends JPanel {
         Color secondColor = settings.getWireColor();
         Color thirdColor = settings.getElectronTailColor();
         Color fourthColor = settings.getElectronHeadColor();
-        
-
-        
-//        System.out.println("rectWidth = " + rectWidth);
-//        System.out.println("rectHeight = " + rectHeight);
-        
+         
         for(int i = 0; i < nV; i++) {
             for(int j = 0; j < nH; j++) {
                 if(brd[i][j] == 0) 
@@ -79,5 +73,25 @@ public class BoardPanel extends JPanel {
                 g.fillRect(j*cellSize, i*cellSize, cellSize-1 , cellSize-1 );
             }
         }
+    }
+
+    public void setControl(PanelsControl control) {
+        this.control = control;
+    }
+    
+    public void takeFile(File file) throws IOException {
+        this.f = file;
+        FileData fd = new FileData(f);
+        b.addData(fd);
+        brd = b.getArray();
+    }
+    
+    public Board getBoard() {
+        return b;
+    }
+    
+    public void updateBoard(Board transformedBoard) {
+        this.b = transformedBoard;
+        this.brd = b.getArray();
     }
 }

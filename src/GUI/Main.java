@@ -28,12 +28,20 @@ public class Main {
         EventQueue.invokeLater(new Runnable() {
             Settings settings = new Settings();
             WireWorldMainWindow m;
-            JPanel rbp = new RightButtonPanel(RBP_WIDTH,RBP_HEIGHT,Color.red);
-            JPanel bp = new BoardPanel(BP_WIDTH,BP_HEIGHT,Color.gray, settings);
-            JPanel bbp = new BottomButtonPanel(BBP_WIDTH, BBP_HEIGHT,Color.green);
-
+            RightButtonPanel  rbp = new RightButtonPanel(RBP_WIDTH,RBP_HEIGHT,Color.red);
+            BoardPanel bp = new BoardPanel(BP_WIDTH,BP_HEIGHT,Color.gray, settings);
+            BottomButtonPanel bbp = new BottomButtonPanel(BBP_WIDTH, BBP_HEIGHT,Color.green);
+            PanelsControl control = new PanelsControl();
             @Override
             public void run() {
+                rbp.setControl(control);
+                bp.setControl(control);
+                bbp.setControl(control);
+                
+                control.setBoardPanel(bp);
+                control.setBottomButtonPanel(bbp);
+                control.setRightButtonPanel(rbp);
+                
                 m = new WireWorldMainWindow();
                 m.setLayout(new GridBagLayout());
                 GridBagConstraints c = new GridBagConstraints();

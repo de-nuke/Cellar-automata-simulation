@@ -6,7 +6,6 @@
 package TestingGUI;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -28,7 +27,11 @@ public class Test {
             @Override
             public void run() {
                 m = new MainWindow();
-                p = new Panel(400, 400, 50);
+                try {
+                    p = new Panel(400, 400, 50);
+                } catch (IOException ex) {
+                    Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 m.add(p, BorderLayout.NORTH);
                 //m.pack();
             }

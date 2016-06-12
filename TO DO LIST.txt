@@ -1,0 +1,4 @@
+1. Zrobic kalse generator  i niech ona robi funkcje transform(oraz numOfNeighb) ktore sa w PanelsControl
+2. Trzeba sie zabezpieczyc przed podaniem w pliku z danymi pozycji wychodz¹cej poza zakres.
+
+3. Okno settings, Przycisk play/stop, faster, slower, dolny panel z przyciskami, restart, save to file, itp, itd

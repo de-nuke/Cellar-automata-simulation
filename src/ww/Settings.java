@@ -34,6 +34,7 @@ public class Settings {
         FileReader fr;
         BufferedReader br;
         String line;
+        String linePart[];
         int i=0;
         try {
             fr = new FileReader(new File("settings.txt"));
@@ -41,7 +42,8 @@ public class Settings {
 
             try {
                 while ((line = br.readLine()) != null) {
-                    settings[i++] = line;
+                    linePart = line.split("-");
+                    settings[i++] = linePart[1];
                 }
             } catch (IOException ex) {
                 System.err.println("Something is wrong with settings file.");
