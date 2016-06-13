@@ -149,6 +149,10 @@ public class Settings {
     public void setWriteEveryFileToTxt(boolean writeEveryFileToTxt) {
         this.writeEveryFileToTxt = writeEveryFileToTxt;
     }
+
+    public void saveSettngs() {
+        
+    }
     
     
 }

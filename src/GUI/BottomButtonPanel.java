@@ -87,4 +87,5 @@ public class BottomButtonPanel extends JPanel implements ActionListener{
     public void setControl(PanelsControl control) {
         this.control = control;
     }
+
 }

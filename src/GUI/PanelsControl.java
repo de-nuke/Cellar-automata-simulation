@@ -6,13 +6,11 @@
 package GUI;
 
 import elements.*;
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
-import java.io.File;
 import java.io.IOException;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import ww.Board;
 import ww.Generator;
 
 /**
@@ -25,14 +23,18 @@ public class PanelsControl {
     private BottomButtonPanel bbp;
     private RightButtonPanel rbp;
     private OptionsPanel op;
-    boolean isPlaying = false;
+    private OtherSettingsPanel osp;
+    private SettingsWindow s;
+    private WireWorldMainWindow m;
+    private boolean isPlaying = false;
     
-    Generator generator;
+    private Generator generator;
     
 
     public void setBoardPanel(BoardPanel bp) {
         this.bp = bp;
         generator = new Generator(bp);
+        generator.setControl(this);
     }
 
     public void setBottomButtonPanel(BottomButtonPanel bbp) {
@@ -45,6 +47,15 @@ public class PanelsControl {
     
     public void setOptionsPanel(OptionsPanel op) {
         this.op = op;
+    }
+
+    void setOtherSettingsPanel(OtherSettingsPanel osp) {
+        this.osp = osp;
+    }
+    
+    void setWindows(SettingsWindow s, WireWorldMainWindow m) {
+        this.s = s;
+        this.m = m;
     }
 
     /** RightButtonPanel **/
@@ -63,23 +74,17 @@ public class PanelsControl {
     }
     
     public void faster() {
-        System.out.println("przyspieszam generator");
         generator.changeSleepTime(-50);
+        System.out.println("Changed generator's sleep time to " + generator.getSleepTime() + " miliseconds.");
     }
     
     public void slower() {
         generator.changeSleepTime(50);
+        System.out.println("Changed generator's sleep time to " + generator.getSleepTime() + " miliseconds.");
     }
     
     public void loadFile()  throws IOException {
-        JFileChooser fc = new JFileChooser();
-        int returnVal = fc.showOpenDialog(null);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            File file = fc.getSelectedFile();
-            System.out.println("HURRA OTWORZYLEM PLIK");
-            bp.takeFile(file);
-            bp.repaint();
-        }
+        bp.loadFile();
 
     }
     /** BottomButtonPanel **/
@@ -122,20 +127,38 @@ public class PanelsControl {
     
     /** OptionsPanel **/
     public void reset() {
-        int width = bp.nH;
-        int height = bp.nV;
-        bp.updateBoard(new Board(width, height));
-        bp.repaint();
-        
-        op.clearTextField();
-        op.clearLabel();
-        
+        bp.reset();
+        op.reset();
+        rbp.reset();
+        generator.stop();
         generator.setSleepTime(500);
     }
 
     public void saveToTxt() {
         bp.writeToTxt();
     }
+    
+    public void setNumOfGen(int n){
+        generator.setNumOfGen(n);
+    }
+
+    public void genStopped() {
+        rbp.reset();
+    }
+
+    public void numLeft(int numOfGen) {
+        op.numLeft(numOfGen);
+    }
+
+    void showMessage(String message, Color c) {
+        op.showMessage(message, c);
+    }
+    
+    public void closeApplication(){
+        s.dispose();
+        m.dispose();
+    }
+
     
 
 }

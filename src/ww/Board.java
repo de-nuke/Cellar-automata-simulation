@@ -43,7 +43,7 @@ public class Board {
 
     public void addData(FileData fd) {
         ArrayList<Element> elementList = fd.getElementsArrayList();
-
+        initializeBoard();
         for (Element e : elementList) {
             insertElement(e, null, null);
         }
@@ -109,7 +109,7 @@ public class Board {
 }
 
     private void initializeBoard() {
-        System.out.println(width + ", " + height);
+        System.out.println("New Board created. Horizontal cells: " + width + ", vertival cells: " + height);
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 boardInts[i][j] = 0;

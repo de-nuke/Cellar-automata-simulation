@@ -37,6 +37,9 @@ public class Main {
             BottomButtonPanel bbp = new BottomButtonPanel(BBP_WIDTH, BBP_HEIGHT, Color.GRAY);
             OptionsPanel op = new OptionsPanel(RP_WIDTH, RP_HEIGHT);
             PanelsControl control = new PanelsControl();
+            
+            ColorSettingsPanel csp = new ColorSettingsPanel(250, 300, settings);
+            OtherSettingsPanel osp = new OtherSettingsPanel(250, 300, settings);
 
             @Override
             public void run() {
@@ -47,26 +50,25 @@ public class Main {
                 rbp.setControl(control);
                 rbp.connectWithSettingsWindow(s);
                 op.setControl(control);
-
+                osp.setControl(control);
+                
                 control.setBoardPanel(bp);
                 control.setBottomButtonPanel(bbp);
                 control.setRightButtonPanel(rbp);
                 control.setOptionsPanel(op);
-
+                control.setOtherSettingsPanel(osp);
+                control.setWindows(s,m);
+                
                 m.setLayout(new GridBagLayout());
+                s.setLayout(new GridBagLayout());
                 GridBagConstraints c = new GridBagConstraints();
-                c.gridy = 0;
-                c.gridx = 0;
-                m.add(rbp, c);
-                c.gridy = 0;
-                c.gridx = 1;
-                m.add(bp, c);
-                c.gridy = 1;
-                c.gridx = 0;
-                m.add(op, c);
-                c.gridy = 1;
-                c.gridx = 1;
-                m.add(bbp, c);
+                c.gridy = 0; c.gridx = 0;  m.add(rbp, c);
+                c.gridy = 0; c.gridx = 1; m.add(bp, c);
+                c.gridy = 1;  c.gridx = 0; m.add(op, c);
+                c.gridy = 1; c.gridx = 1; m.add(bbp, c);
+                
+                c.gridy = 0; c.gridx = 0; s.add(csp,c);
+                c.gridy = 1; c.gridx = 0; s.add(osp,c);
 
                 m.setVisible(true);
             }

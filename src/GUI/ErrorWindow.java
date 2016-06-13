@@ -18,7 +18,6 @@ import javax.swing.JLabel;
  * @author Dom
  */
 public class ErrorWindow extends JFrame implements ActionListener {
-    
     JButton ok = new JButton("OK");
     JLabel textMessage;
     

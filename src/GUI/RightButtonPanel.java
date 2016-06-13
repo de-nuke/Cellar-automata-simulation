@@ -24,15 +24,16 @@ import javax.swing.JPanel;
 public class RightButtonPanel extends JPanel implements ActionListener{
     PanelsControl control;
     
-    int pWidth;
-    int pHeight;
-    JButton play = new JButton("Play/Stop");
-    JButton singleStep = new JButton("Single Step");
-    JButton faster = new JButton("Faster");
-    JButton slower = new JButton("Slower");
-    JButton loadFile = new JButton("Load file");
-    JButton settings = new JButton("Settings");
-    JButton restart = new JButton("Restart");
+    private int pWidth;
+    private int pHeight;
+    private boolean isPlaying;
+    private JButton play = new JButton("Start generating...");
+    private JButton singleStep = new JButton("Single Step");
+    private JButton faster = new JButton("Faster");
+    private JButton slower = new JButton("Slower");
+    private JButton loadFile = new JButton("Load file");
+    private JButton settings = new JButton("Settings");
+    private JButton restart = new JButton("Restart");
     SettingsWindow s;
     
     File f;
@@ -40,6 +41,7 @@ public class RightButtonPanel extends JPanel implements ActionListener{
     public RightButtonPanel(int w, int h) {
         this.pHeight = h;
         this.pWidth = w;
+        isPlaying = false;
         setLayout(new GridBagLayout());
         
         JPanel p1 = new JPanel(new FlowLayout());
@@ -97,8 +99,17 @@ public class RightButtonPanel extends JPanel implements ActionListener{
             }
         if(btn == singleStep) 
             control.singleStep();
-        if(btn == play)
+        if(btn == play) {
             control.play();
+            if(!isPlaying) {
+                isPlaying = true;
+                play.setText("Pause");
+            } else {
+                isPlaying = false;
+                play.setText("Resume");
+            }
+        }
+
         if(btn == faster) {
             control.faster();
         }
@@ -114,5 +125,9 @@ public class RightButtonPanel extends JPanel implements ActionListener{
     
     public void connectWithSettingsWindow(SettingsWindow s) {
         this.s = s;
+    }
+    
+    public void reset(){
+        play.setText("Start generating...");
     }
 }

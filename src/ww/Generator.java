@@ -5,18 +5,19 @@
  */
 package ww;
 
-import GUI.BoardPanel;
+import GUI.*;
 
 /**
  *
  * @author Dom
  */
 public class Generator {
-
-    BoardPanel bp;
-    GenerationThread genThread;
-    int sleepTime = 500;
-
+    PanelsControl control;
+    
+    private BoardPanel bp;
+    private GenerationThread genThread;
+    private int sleepTime = 500;
+    private int numOfGen = 0;
     public Generator(BoardPanel bp) {
         this.bp = bp;
     }
@@ -170,9 +171,12 @@ public class Generator {
     }
 
     public void stop() {
-        System.out.println("Stopped");
-        genThread.isGenerating = false;
-        genThread = null;
+        if(genThread != null) {
+            System.out.println("Stopped");
+            genThread.isGenerating = false;
+            genThread = null;
+        }
+        
     }
     
     public void changeSleepTime(int timeInMs) {
@@ -191,6 +195,19 @@ public class Generator {
             sleepTime = timeInMs;
         }
     }
+
+    public int getSleepTime() {
+        return sleepTime;
+    }
+
+    public void setNumOfGen(int n) {
+        numOfGen = n;
+    }
+    
+    public void setControl(PanelsControl control) {
+        this.control = control;
+    }
+   
     /*****************************************/
     class GenerationThread implements Runnable {
 
@@ -202,6 +219,10 @@ public class Generator {
 
         @Override
         public void run() {
+            boolean isLimited = false;
+            if(numOfGen == 0) isLimited = false;
+            else if (numOfGen > 0) isLimited = true;
+            
             while (isGenerating) {
                 try {
                     Thread.sleep(sleepTime);
@@ -210,6 +231,13 @@ public class Generator {
                 }
                 transform();
                 bp.repaint();
+                if(isLimited) {
+                    control.numLeft(numOfGen);
+                    if(--numOfGen == 0) {
+                        control.genStopped();
+                        break;
+                    }
+                }
             }
         }
     }

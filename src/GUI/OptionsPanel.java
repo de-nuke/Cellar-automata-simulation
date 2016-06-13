@@ -7,6 +7,7 @@ package GUI;
 
 import static GUI.MyDimensions.BIG_BTN;
 import static GUI.MyDimensions.SMALL_BTN;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -29,6 +30,8 @@ public class OptionsPanel extends JPanel implements ActionListener {
     JButton toTxt = new JButton("Save to txt");
     
     JLabel n = new JLabel("n = ");
+    JLabel nleft = new JLabel("");
+    JLabel msg = new JLabel("");
     private JTextField tf = new JTextField("n");
     
     
@@ -46,12 +49,16 @@ public class OptionsPanel extends JPanel implements ActionListener {
         apply.addActionListener(this);
         toTxt.setPreferredSize(new Dimension(BIG_BTN.width, SMALL_BTN.height));
         toTxt.addActionListener(this);
-        n.setPreferredSize(new Dimension(BIG_BTN.width, SMALL_BTN.height));
+        n.setPreferredSize(new Dimension((BIG_BTN.width-10)/3 -10, SMALL_BTN.height)); //(BIG_BTN.width-10)/3 == 1/3 of BIG_BTN without horizonal gaps
+        nleft.setPreferredSize(new Dimension((BIG_BTN.width-10)/3 -10, SMALL_BTN.height));
+        msg.setPreferredSize(new Dimension((BIG_BTN.width-10)/3 + 20, SMALL_BTN.height));
         tf.setPreferredSize(SMALL_BTN);
         tf.setToolTipText("Type expected number of generations here");
         
         add(toTxt);
         add(n);
+        add(nleft);
+        add(msg);
         add(tf);
         add(apply);
         add(reset);
@@ -66,14 +73,11 @@ public class OptionsPanel extends JPanel implements ActionListener {
         this.control = control;
     }
 
-    public void clearTextField() {
+    private void clearLabelsAndTextField() {
         tf.setText("n");
-    }
-    
-    public void clearLabel() {
         n.setText("n = ");
+        nleft.setText("");
     }
-    
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton btn = (JButton) e.getSource();
@@ -83,5 +87,31 @@ public class OptionsPanel extends JPanel implements ActionListener {
         if(btn == toTxt) {
             control.saveToTxt();
         }
+        if(btn == apply) {
+            int number = 0;
+            try{
+                number = Integer.parseInt(tf.getText());
+            } catch(NumberFormatException ex) {
+            }
+            n.setText("n = " + number);
+            if(number < 0) number = 0;
+            control.setNumOfGen(number);
+        }
+        if(btn == quit) {
+            control.closeApplication();
+        }
+    }
+    
+    public void reset() {
+        clearLabelsAndTextField();
+    }
+
+    void numLeft(int numOfGen) {
+        nleft.setText("n left: " + numOfGen);
+    }
+
+    void showMessage(String message,Color c) {
+        msg.setForeground(c);
+        msg.setText(message);
     }
 }

@@ -5,6 +5,9 @@
  */
 package GUI;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 /**
@@ -12,7 +15,6 @@ import javax.swing.JFrame;
  * @author Dom
  */
 public class SettingsWindow extends JFrame{
-    
     
     public SettingsWindow() {
         super("Settings");
@@ -22,5 +24,6 @@ public class SettingsWindow extends JFrame{
         setSize(a,b);
         setLocationRelativeTo(null);
         setResizable(false); 
+       
     }
 }
