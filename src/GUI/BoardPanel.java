@@ -5,11 +5,12 @@
  */
 package GUI;
 
+import elements.Element;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import ww.Board;
@@ -20,7 +21,7 @@ import ww.Settings;
  *
  * @author Dom
  */
-public class BoardPanel extends JPanel{
+public class BoardPanel extends JPanel implements MouseListener{
     PanelsControl control;
             
     int pWidth;
@@ -32,6 +33,8 @@ public class BoardPanel extends JPanel{
     int nV; //number of cells vertically
     int cellSize; //in pixels
     Settings settings;
+    
+    Element pickedElement = null;
     
     public BoardPanel(int w, int h, Color c, Settings s) throws IOException {
         setBackground(c);
@@ -45,6 +48,8 @@ public class BoardPanel extends JPanel{
         b = new Board(nH, nV);
         brd = b.getArray();
         cellSize = settings.getCellSize();
+        
+        addMouseListener(this);
     }
 
     @Override
@@ -81,7 +86,7 @@ public class BoardPanel extends JPanel{
     
     public void takeFile(File file) throws IOException {
         this.f = file;
-        FileData fd = new FileData(f);
+        FileData fd = new FileData(f, settings.getCellSize());
         b.addData(fd);
         brd = b.getArray();
     }
@@ -93,5 +98,47 @@ public class BoardPanel extends JPanel{
     public void updateBoard(Board transformedBoard) {
         this.b = transformedBoard;
         this.brd = b.getArray();
+    }
+    
+    public void putElement(Element e) {
+        System.out.println("Wykonałem putElement");
+        pickedElement = e;
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        int cellX = (int) (getMousePosition().x / cellSize);
+        int cellY = (int) (getMousePosition().y / cellSize);
+        
+        if(pickedElement != null) {
+            System.out.println("cellX: " + cellX + " cellY: " + cellY);
+            b.insertElement(pickedElement, cellX, cellY);
+            brd = b.getArray();
+            repaint();
+        }
+        else
+            System.out.println("pickedElement == null");
+        
+       
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

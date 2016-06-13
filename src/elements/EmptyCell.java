@@ -18,6 +18,7 @@ public class EmptyCell extends Element {
     public EmptyCell(String n, Point p,int width, int height ) {
         super(n,p,width*height,width,height); //niech sie da okreslax ile na ile ma byc wstawionych pustych
         emptyCells = new int[height][width];
+        super.cellsArray = emptyCells;
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 emptyCells[i][j] = 0;
@@ -25,8 +26,8 @@ public class EmptyCell extends Element {
         }
     }
     
-    public int[][] getCellsArray() {
-        return emptyCells;
-    }
+//    public int[][] getCellsArray() {
+//        return emptyCells;
+//    }
     
 }

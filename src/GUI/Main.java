@@ -13,9 +13,6 @@ import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.io.IOException;
-import javax.swing.JPanel;
-import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
 import ww.Settings;
 
 /**
@@ -30,7 +27,7 @@ public class Main {
             WireWorldMainWindow m;
             RightButtonPanel  rbp = new RightButtonPanel(RBP_WIDTH,RBP_HEIGHT,Color.red);
             BoardPanel bp = new BoardPanel(BP_WIDTH,BP_HEIGHT,Color.gray, settings);
-            BottomButtonPanel bbp = new BottomButtonPanel(BBP_WIDTH, BBP_HEIGHT,Color.green);
+            BottomButtonPanel bbp = new BottomButtonPanel(BBP_WIDTH, BBP_HEIGHT,Color.GRAY);
             PanelsControl control = new PanelsControl();
             @Override
             public void run() {

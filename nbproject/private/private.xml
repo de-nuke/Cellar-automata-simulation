@@ -3,16 +3,28 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/TestingGUI/Panel.java</file>
-            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/RightButtonPanel.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/PanelsControl.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/elements/Element.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/elements/XorGate.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/elements/NotGate.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/elements/AndGate.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/elements/Wire.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/MyDimensions.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/Main.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/BottomButtonPanel.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/ww/Generator.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/elements/DiodeN.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/ww/Settings.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/elements/ElectronTail.java</file>
             <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/ww/Board.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/elements/OrGate.java</file>
             <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/WireWorldMainWindow.java</file>
-            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/tests/TestFileData.java</file>
             <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/ww/FileData.java</file>
             <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/BoardPanel.java</file>
             <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/ErrorWindow.java</file>
-            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/Main.java</file>
-            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/BottomButtonPanel.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/elements/ElectronHead.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/elements/DiodeR.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/elements/EmptyCell.java</file>
         </group>
     </open-files>
 </project-private>

@@ -27,7 +27,7 @@ public class Panel extends JPanel {
 //      ExampleBoard b = new ExampleBoard(n);
 //      brd = b.getArray();
         Board b = new Board(w,h);
-        b.addData(new FileData(new File("data.txt")));
+        b.addData(new FileData(new File("data.txt"), 10));
         brd = b.getArray();
         panelWidth = w;
         panelHeight = h;

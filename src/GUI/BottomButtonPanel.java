@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import static GUI.MyDimensions.ELMNT_BTN;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,9 +21,9 @@ public class BottomButtonPanel extends JPanel implements ActionListener{
     
     int pWidth;
     int pHeight;
-    
+   
     JButton empty = new JButton("Empty");
-    JButton wire = new JButton("wire");
+    JButton wire = new JButton("Wire");
     JButton eh = new JButton("ElectronHead");
     JButton et = new JButton("ElectronTail");
     JButton diodeN = new JButton("Diode Normal");
@@ -37,7 +38,41 @@ public class BottomButtonPanel extends JPanel implements ActionListener{
     public BottomButtonPanel(int w, int h, Color c) {
         this.pHeight = h;
         this.pWidth = w;
-        setBackground(c);
+        //setBackground(c);
+        setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        
+        empty.setPreferredSize(ELMNT_BTN);
+        wire.setPreferredSize(ELMNT_BTN);
+        eh.setPreferredSize(ELMNT_BTN);
+        et.setPreferredSize(ELMNT_BTN);
+        diodeN.setPreferredSize(ELMNT_BTN);
+        diodeR.setPreferredSize(ELMNT_BTN);
+        orgate.setPreferredSize(ELMNT_BTN);
+        xorgate.setPreferredSize(ELMNT_BTN);
+        andgate.setPreferredSize(ELMNT_BTN);
+        notgate.setPreferredSize(ELMNT_BTN);
+
+        empty.addActionListener(this);
+        wire.addActionListener(this);
+        eh.addActionListener(this);
+        et.addActionListener(this);
+        diodeN.addActionListener(this);
+        diodeR.addActionListener(this);
+        orgate.addActionListener(this);
+        xorgate.addActionListener(this);
+        andgate.addActionListener(this);
+        notgate.addActionListener(this);
+        
+        add(empty);
+        add(wire);
+        add(eh);
+        add(et);
+        add(diodeN);
+        add(diodeR);
+        add(orgate);
+        add(xorgate);
+        add(andgate);
+        add(notgate);
     }
 
     @Override
@@ -47,7 +82,7 @@ public class BottomButtonPanel extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        control.insertElement(e);
     }
 
     public void setControl(PanelsControl control) {

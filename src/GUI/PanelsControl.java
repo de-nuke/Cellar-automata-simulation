@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import elements.*;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -63,7 +65,9 @@ public class PanelsControl {
     }
 
     private void transform(Integer[][] brd1, Integer[][] brd2, int w, int h) {
-        if(brd1 == brd2) System.out.println("TEn sam adres tablic");
+        if (brd1 == brd2) {
+            System.out.println("TEn sam adres tablic");
+        }
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < w; j++) {
                 if (brd1[i][j] == 3) {
@@ -179,14 +183,51 @@ public class PanelsControl {
             if (brd[i - 1][j] == 3) {
                 neighbNumber++;
             }
-        }
-        if (brd[i - 1][j + 1] == 3) {
-            neighbNumber++;
-        }
-        if (brd[i][j + 1] == 3) {
-            neighbNumber++;
+            if (brd[i - 1][j + 1] == 3) {
+                neighbNumber++;
+            }
+            if (brd[i][j + 1] == 3) {
+                neighbNumber++;
+            }
         }
         return neighbNumber;
 
+    }
+    
+    public void insertElement(ActionEvent e) {
+        JButton btn = (JButton) e.getSource();
+        Point tempPoint = new Point(0,0);
+        switch(btn.getText()) {
+            case "Empty": {
+                bp.putElement(new EmptyCell("empty", tempPoint, 1, 1));
+            } break;
+            case "Wire": {
+                bp.putElement(new Wire("wire", tempPoint, 1,1));
+            } break;
+            case "ElectronHead": {
+                bp.putElement(new ElectronHead("electronhead", tempPoint, 1, 1));
+            } break;
+            case "ElectronTail": {
+                bp.putElement(new ElectronTail("electrontail", tempPoint, 1, 1));
+            } break;
+            case "Diode Normal": {
+                
+            } break;
+            case "Diode Reversed": {
+                
+            } break;
+            case "OR gate": {
+                
+            } break;
+            case "XOR gate": {
+                
+            } break;
+            case "AND gate": {
+                
+            } break;
+            case "NOT gate": {
+                
+            } break;
+        }
     }
 }

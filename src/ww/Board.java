@@ -45,7 +45,7 @@ public class Board {
         ArrayList<Element> elementList = fd.getElementsArrayList();
 
         for (Element e : elementList) {
-            insertElement(e);
+            insertElement(e,null,null);
         }
     }
 
@@ -83,17 +83,25 @@ public class Board {
         return text;
     }
 
-    private void insertElement(Element e) {
+    public void insertElement(Element e, Integer specifiedPosX, Integer specifiedPosY) {
 
+        int posX, posY;
+        if(specifiedPosX == null) 
+            posX = e.getPosition().x;
+        else
+            posX = specifiedPosX;
+        if(specifiedPosY == null)
+            posY = e.getPosition().y;
+        else
+            posY = specifiedPosY;
         switch (e.getName()) {
             case "wire": {
                 Wire wire = (Wire) e;
                 int[][] wireArray = wire.getCellsArray();
-                int posX = e.getPosition().x;
-                int posY = e.getPosition().y;
                 for (int i = 0; i < e.getHeight(); i++) {
                     for (int j = 0; j < e.getWidth(); j++) {
-                        boardInts[i + posY][j + posX] = wireArray[i][j];
+                        if(i+posY < height && j + posX < width)
+                            boardInts[i + posY][j + posX] = wireArray[i][j];
                     }
                 }
             }
@@ -101,34 +109,33 @@ public class Board {
             case "diodenormal": {
                 DiodeN diodeN = (DiodeN) e;
                 int[][] diodeArray = diodeN.getCellsArray();
-                int posX = e.getPosition().x;
-                int posY = e.getPosition().y;
                 for (int i = 0; i < e.getHeight(); i++) {
                     for (int j = 0; j < e.getWidth(); j++) {
-                        boardInts[i + posY][j + posX] = diodeArray[i][j];
+                        if(i+posY < height && j + posX < width)
+                            boardInts[i + posY][j + posX] = diodeArray[i][j];
                     }
                 }
             }
             case "diodereversed": {
                 DiodeR diodeR = (DiodeR) e;
                 int[][] diodeArray = diodeR.getCellsArray();
-                int posX = e.getPosition().x;
-                int posY = e.getPosition().y;
                 for (int i = 0; i < e.getHeight(); i++) {
                     for (int j = 0; j < e.getWidth(); j++) {
-                        boardInts[i + posY][j + posX] = diodeArray[i][j];
+                        if(i+posY < height && j + posX < width)
+                            boardInts[i + posY][j + posX] = diodeArray[i][j];
                     }
                 }
             }
             break;
             case "empty": {
-                EmptyCell emptyCells = (EmptyCell) e;
-                int[][] emptyCellsArray = emptyCells.getCellsArray();
-                int posX = e.getPosition().x;
-                int posY = e.getPosition().y;
+//                EmptyCell emptyCells = (EmptyCell) e;
+//                int[][] emptyCellsArray = emptyCells.getCellsArray();
+                int[][]cellsArray = e.getCellsArray();
                 for (int i = 0; i < e.getHeight(); i++) {
                     for (int j = 0; j < e.getWidth(); j++) {
-                        boardInts[i + posY][j + posX] = emptyCellsArray[i][j];
+                        if(i+posY < height && j + posX < width)
+//                            boardInts[i + posY][j + posX] = emptyCellsArray[i][j];
+                            boardInts[i + posY][j + posX] = cellsArray[i][j];
                     }
                 }
 
@@ -137,11 +144,10 @@ public class Board {
             case "electronhead": {
                 ElectronHead electronHead = (ElectronHead) e;
                 int[][] electronHeadArray = electronHead.getCellsArray();
-                int posX = e.getPosition().x;
-                int posY = e.getPosition().y;
                 for (int i = 0; i < e.getHeight(); i++) {
                     for (int j = 0; j < e.getWidth(); j++) {
-                        boardInts[i + posY][j + posX] = electronHeadArray[i][j];
+                        if(i+posY < height && j + posX < width)
+                            boardInts[i + posY][j + posX] = electronHeadArray[i][j];
                     }
                 }
             }
@@ -149,11 +155,10 @@ public class Board {
             case "electrontail": {
                 ElectronTail electronTail = (ElectronTail) e;
                 int[][] electronTailArray = electronTail.getCellsArray();
-                int posX = e.getPosition().x;
-                int posY = e.getPosition().y;
                 for (int i = 0; i < e.getHeight(); i++) {
                     for (int j = 0; j < e.getWidth(); j++) {
-                        boardInts[i + posY][j + posX] = electronTailArray[i][j];
+                        if(i+posY < height && j + posX < width)
+                            boardInts[i + posY][j + posX] = electronTailArray[i][j];
                     }
                 }
             }
@@ -161,11 +166,10 @@ public class Board {
             case "orgate": {
                 OrGate orGate = (OrGate) e;
                 int[][] gateArray = orGate.getCellsArray();
-                int posX = e.getPosition().x;
-                int posY = e.getPosition().y;
                 for (int i = 0; i < e.getHeight(); i++) {
                     for (int j = 0; j < e.getWidth(); j++) {
-                        boardInts[i + posY][j + posX] = gateArray[i][j];
+                        if(i+posY < height && j + posX < width)
+                            boardInts[i + posY][j + posX] = gateArray[i][j];
                     }
                 }
             }
@@ -173,11 +177,10 @@ public class Board {
             case "xorgate": {
                 XorGate xorGate = (XorGate) e;
                 int[][] gateArray = xorGate.getCellsArray();
-                int posX = e.getPosition().x;
-                int posY = e.getPosition().y;
                 for (int i = 0; i < e.getHeight(); i++) {
                     for (int j = 0; j < e.getWidth(); j++) {
-                        boardInts[i + posY][j + posX] = gateArray[i][j];
+                        if(i+posY < height && j + posX < width)
+                            boardInts[i + posY][j + posX] = gateArray[i][j];
                     }
                 }
             }
@@ -185,11 +188,10 @@ public class Board {
             case "andgate": {
                 AndGate andGate = (AndGate) e;
                 int[][] gateArray = andGate.getCellsArray();
-                int posX = e.getPosition().x;
-                int posY = e.getPosition().y;
                 for (int i = 0; i < e.getHeight(); i++) {
                     for (int j = 0; j < e.getWidth(); j++) {
-                        boardInts[i + posY][j + posX] = gateArray[i][j];
+                        if(i+posY < height && j + posX < width)
+                            boardInts[i + posY][j + posX] = gateArray[i][j];
                     }
                 }
             }
@@ -197,11 +199,10 @@ public class Board {
             case "notgate": {
                 NotGate notGate = (NotGate) e;
                 int[][] gateArray = notGate.getCellsArray();
-                int posX = e.getPosition().x;
-                int posY = e.getPosition().y;
                 for (int i = 0; i < e.getHeight(); i++) {
                     for (int j = 0; j < e.getWidth(); j++) {
-                        boardInts[i + posY][j + posX] = gateArray[i][j];
+                        if(i+posY < height && j + posX < width)
+                            boardInts[i + posY][j + posX] = gateArray[i][j];
                     }
                 }
             }

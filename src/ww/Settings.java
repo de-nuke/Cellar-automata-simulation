@@ -7,8 +7,6 @@ package ww;
 
 import java.awt.*;
 import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -36,20 +34,16 @@ public class Settings {
         String line;
         String linePart[];
         int i=0;
+        InputStream is = getClass().getResourceAsStream("settings.txt"); //settings.txt jest na stałe w pliku jar
+        InputStreamReader isr = new InputStreamReader(is);
+        br = new BufferedReader(isr);
         try {
-            fr = new FileReader(new File("settings.txt"));
-            br = new BufferedReader(fr);
-
-            try {
-                while ((line = br.readLine()) != null) {
-                    linePart = line.split("-");
-                    settings[i++] = linePart[1];
-                }
-            } catch (IOException ex) {
-                System.err.println("Something is wrong with settings file.");
+            while ((line = br.readLine()) != null) {
+                linePart = line.split("-");
+                settings[i++] = linePart[1];
             }
-        } catch (FileNotFoundException ex) {
-            System.err.println("File with settings not found! ");
+        } catch (IOException ex) {
+            System.err.println("Something is wrong with settings file.");
         }
         
         makeSettings(settings);

@@ -1,6 +1,8 @@
+wire 71 -1
 wire 0 1
 orgate 1 10
 xorgate 19 19
+xorgate 68 40
 andgate 20 11
 wire 0 2
 wire 1 2

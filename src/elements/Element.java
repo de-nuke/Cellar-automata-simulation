@@ -17,9 +17,10 @@ public class Element {
     int numberOfCells;
     int width;
     int height;
+    int cellsArray[][];
 
     
-    public Element(String n, Point p, int numberOfCells, int w, int h) {
+    protected Element(String n, Point p, int numberOfCells, int w, int h) {
         this.name = n;
         this.position = p;
         this.numberOfCells = numberOfCells;
@@ -46,6 +47,10 @@ public class Element {
         return height;
     }
     
+    public int[][] getCellsArray() {
+        return cellsArray;
+    }
+        
     @Override
     public String toString() {
         return name + "( "+ position.x + "," + position.y + " ) - Dimensions:  " + width + " x " + height;

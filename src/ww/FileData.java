@@ -6,6 +6,7 @@
 package ww;
 
 import GUI.ErrorWindow;
+import GUI.MyDimensions;
 import elements.*;
 import elements.Element;
 import elements.Wire;
@@ -23,18 +24,16 @@ import java.util.ArrayList;
  */
 public class FileData {
 
-    ArrayList<String> elements = new ArrayList();
-    ArrayList<Element> elementes = new ArrayList();
-    ArrayList<Point> coordinates = new ArrayList();
+    ArrayList<Element> elements = new ArrayList();
     Integer n = 0;
-
+    int cellSize = 10;
     public FileData() {
 
     }
 
-    public FileData(File file)
+    public FileData(File file, int cellSize)
             throws IOException {
-        
+            this.cellSize = cellSize;
             readFromFile(file);
     }
 
@@ -49,47 +48,45 @@ public class FileData {
             lineParts = line.split("\\s+");
 
             if (isRecognized(lineParts[0]) && isCorrectPoint(lineParts[1], lineParts[2])) {
-//                elements.add(lineParts[0]);
-//                coordinates.add(new Point(Integer.parseInt(lineParts[1]), Integer.parseInt(lineParts[2])));
                 Point p = new Point(Integer.parseInt(lineParts[1]), Integer.parseInt(lineParts[2]));
                 switch (lineParts[0]) {
                     case "wire": {
-                        elementes.add(new Wire("wire", p, 1, 1));
+                        elements.add(new Wire("wire", p, 1, 1));
                     }
                     break;
                     case "diodenormal": {
-                        elementes.add(new DiodeN("diodenormal", p));
+                        elements.add(new DiodeN("diodenormal", p));
                     }
                     case "diodereversed": {
-                        elementes.add(new DiodeR("diodereversed", p));
+                        elements.add(new DiodeR("diodereversed", p));
                     }
                     break;
                     case "empty": {
-                        elementes.add(new EmptyCell("empty", p, 1, 1));
+                        elements.add(new EmptyCell("empty", p, 1, 1));
                     }
                     break;
                     case "electronhead": {
-                        elementes.add(new ElectronHead("electronhead", p, 1, 1));
+                        elements.add(new ElectronHead("electronhead", p, 1, 1));
                     }
                     break;
                     case "electrontail": {
-                        elementes.add(new ElectronTail("electrontail", p, 1, 1));
+                        elements.add(new ElectronTail("electrontail", p, 1, 1));
                     }
                     break;
                     case "orgate": {
-                        elementes.add(new OrGate("orgate", p));
+                        elements.add(new OrGate("orgate", p));
                     }
                     break;
                     case "xorgate": {
-                        elementes.add(new XorGate("xorgate", p));
+                        elements.add(new XorGate("xorgate", p));
                     }
                     break;
                     case "andgate": {
-                        elementes.add(new AndGate("andgate", p));
+                        elements.add(new AndGate("andgate", p));
                     }
                     break;
                     case "notgate": {
-                        elementes.add(new NotGate("notgate", p));
+                        elements.add(new NotGate("notgate", p));
                     }
                     break;
                     default:
@@ -107,27 +104,7 @@ public class FileData {
     }
 
     public ArrayList<Element> getElementsArrayList() {
-        return elementes;
-    }
-
-    public Element getElementNr(int i) {
-        return elementes.get(i);
-    }
-
-    public String getElementNameAt(int elementIndex) {
-        if (elementIndex < 0 || elementIndex >= elements.size()) {
-            throw new IndexOutOfBoundsException("Index " + elementIndex + "is out of bounds.");
-        } else {
-            return elements.get(elementIndex);
-        }
-    }
-
-    public Point getPointAt(int pointIndex) {
-        if (pointIndex < 0 || pointIndex >= coordinates.size()) {
-            throw new IndexOutOfBoundsException("Index " + pointIndex + "is out of bounds.");
-        } else {
-            return coordinates.get(pointIndex);
-        }
+        return elements;
     }
 
     public Integer getNumberOfElements() {
@@ -161,10 +138,6 @@ public class FileData {
             return false;
         }
 
-        //Warto sprawdzic czy x.charAt(0) lub y.charAt(0)
-        //są na pewno mniejsze niż na przykład 3 - jeśli mamy wymiary 300x300,
-        //to najdalsze pole będzie miało x = 299, y = 299
-        //Nie pisze tego teraz, bo nie wiem jaka będzie szerokość
         for (; i < lengthX; i++) {
             char c = x.charAt(i);
             if (c < '0' || c > '9') {
@@ -178,13 +151,20 @@ public class FileData {
                 return false;
             }
         }
+        /* - JEŚLI CHCE ZEBY PODANIE WSPÓŁRZĘDNEJ POZA ZAKRESEM SKUTOWAŁO BŁEDEM - ODPKOMENTOWAC
+           // gdy jest zakomentowane, to pola poza zakresem po prostu nie są rysowane
+        int maxX = (int) (MyDimensions.getBPwidth()/cellSize) - 1;
+        int maxY = (int) (MyDimensions.getBPheight()/cellSize - 1);
+        if(Integer.parseInt(x) < 0 || Integer.parseInt(x) > maxX) return false;
+        if(Integer.parseInt(y) < 0 || Integer.parseInt(y) > maxY) return false;
+        */
         return true;
     }
 
     @Override
     public String toString() {
-        String text = "FileData has succesfully read " + elementes.size() + " elements: \n";
-        for (Element e : elementes) {
+        String text = "FileData has succesfully read " + elements.size() + " elements: \n";
+        for (Element e : elements) {
             text += e.toString() + "\n";
         }
         return text;

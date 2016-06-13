@@ -22,4 +22,12 @@ public class MyDimensions {
     static int BBP_HEIGHT = 144;
     static Dimension BIG_BTN = new Dimension(250, 86);
     static Dimension SMALL_BTN = new Dimension(123, 30);
+    static Dimension ELMNT_BTN = new Dimension(130, 60);
+    public static int getBPwidth() {
+        return BP_WIDTH;
+    }
+    
+    public static int getBPheight() {
+        return BP_HEIGHT;
+    }
 }
