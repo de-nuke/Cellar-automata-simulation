@@ -14,15 +14,12 @@ import javax.swing.*;
  */
 public class WireWorldMainWindow extends JFrame{
     
-
-    
     public WireWorldMainWindow() {
         super("WireWorld");
         
         int b = MAIN_WIN_HEIGH;
         int a = MAIN_WIN_WIDTH;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	setVisible(true);
         setSize(a,b);
         setLocationRelativeTo(null);
         setResizable(false); 

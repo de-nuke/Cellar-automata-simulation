@@ -33,13 +33,13 @@ public class RightButtonPanel extends JPanel implements ActionListener{
     JButton loadFile = new JButton("Load file");
     JButton settings = new JButton("Settings");
     JButton restart = new JButton("Restart");
+    SettingsWindow s;
     
     File f;
     
-    public RightButtonPanel(int w, int h, Color c) {
+    public RightButtonPanel(int w, int h) {
         this.pHeight = h;
         this.pWidth = w;
-        setBackground(c);
         setLayout(new GridBagLayout());
         
         JPanel p1 = new JPanel(new FlowLayout());
@@ -102,14 +102,17 @@ public class RightButtonPanel extends JPanel implements ActionListener{
         if(btn == faster) {
             control.faster();
         }
-            
         if(btn == slower)
             control.slower();
+        if(btn == settings)
+            s.setVisible(true);
     }
     
     public void setControl(PanelsControl c) {
         this.control = c;
     }
     
-    
+    public void connectWithSettingsWindow(SettingsWindow s) {
+        this.s = s;
+    }
 }

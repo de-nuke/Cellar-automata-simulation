@@ -5,8 +5,6 @@
  */
 package GUI;
 
-import static GUI.MyDimensions.MAIN_WIN_HEIGH;
-import static GUI.MyDimensions.MAIN_WIN_WIDTH;
 import javax.swing.JFrame;
 
 /**
@@ -18,12 +16,9 @@ public class SettingsWindow extends JFrame{
     
     public SettingsWindow() {
         super("Settings");
-        
-        
-        int b = MAIN_WIN_HEIGH;
-        int a = MAIN_WIN_WIDTH;
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	setVisible(true);
+        int b = 650;
+        int a = 402;
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setSize(a,b);
         setLocationRelativeTo(null);
         setResizable(false); 

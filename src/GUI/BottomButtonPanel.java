@@ -38,7 +38,6 @@ public class BottomButtonPanel extends JPanel implements ActionListener{
     public BottomButtonPanel(int w, int h, Color c) {
         this.pHeight = h;
         this.pWidth = w;
-        //setBackground(c);
         setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
         
         empty.setPreferredSize(ELMNT_BTN);
@@ -88,6 +87,4 @@ public class BottomButtonPanel extends JPanel implements ActionListener{
     public void setControl(PanelsControl control) {
         this.control = control;
     }
-   
-
 }

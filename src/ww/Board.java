@@ -27,7 +27,6 @@ public class Board {
     Integer[][] boardInts;
     int width, height;
     
-
     public Board(int width, int height) {
         boardInts = new Integer[height][width];
         this.width = width;
@@ -107,7 +106,6 @@ public class Board {
                 }
             }
         }
-
 }
 
     private void initializeBoard() {

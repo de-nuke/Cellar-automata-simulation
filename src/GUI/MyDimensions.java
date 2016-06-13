@@ -12,8 +12,8 @@ import java.awt.Dimension;
  * @author Dom
  */
 public class MyDimensions {
-    static int MAIN_WIN_WIDTH = (int) (650 * 1.618);
     static int MAIN_WIN_HEIGH = 650;
+    static int MAIN_WIN_WIDTH = (int) (MAIN_WIN_HEIGH * 1.618);
     static int RBP_WIDTH = 270; 
     static int RBP_HEIGHT = 430;
     static int BP_WIDTH = 700;

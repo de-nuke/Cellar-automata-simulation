@@ -212,7 +212,5 @@ public class Generator {
                 bp.repaint();
             }
         }
-
     }
-
 }
