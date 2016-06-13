@@ -10,11 +10,16 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import ww.Board;
 import ww.FileData;
+import ww.IO;
 import ww.Settings;
 
 /**
@@ -27,6 +32,7 @@ public class BoardPanel extends JPanel implements MouseListener{
     int pWidth;
     int pHeight;
     File f;
+    FileData fd;
     Board b;
     Integer [][]brd;
     int nH; //number of cells horizontally
@@ -86,7 +92,7 @@ public class BoardPanel extends JPanel implements MouseListener{
     
     public void takeFile(File file) throws IOException {
         this.f = file;
-        FileData fd = new FileData(f, settings.getCellSize());
+        fd = new FileData(f, settings.getCellSize());
         b.addData(fd);
         brd = b.getArray();
     }
@@ -118,8 +124,6 @@ public class BoardPanel extends JPanel implements MouseListener{
         }
         else
             System.out.println("pickedElement == null");
-        
-       
     }
 
     @Override
@@ -140,5 +144,15 @@ public class BoardPanel extends JPanel implements MouseListener{
     @Override
     public void mouseExited(MouseEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void writeToTxt() {
+        try {
+            IO.writeToFile(b, fd == null ? null : fd.getFileName());
+        } catch (FileNotFoundException ex) {
+            System.err.println("Couldn't create output file. Inappropriate file name or path.");
+        } catch (UnsupportedEncodingException ex) {
+            System.err.println("Couldn't create output file. Unsupproted encoding.");
+        }
     }
 }

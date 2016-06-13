@@ -1,0 +1,14 @@
+wire 18 25
+wire 18 26
+wire 19 23
+wire 19 24
+wire 19 27
+wire 20 26
+wire 20 27
+wire 20 28
+wire 20 29
+wire 21 23
+wire 21 24
+wire 21 27
+wire 22 25
+wire 22 26

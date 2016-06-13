@@ -7,8 +7,6 @@ package ww;
 
 import GUI.ErrorWindow;
 import elements.*;
-import elements.Element;
-import elements.Wire;
 import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,28 +15,21 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
  * @author Dom
  */
-public class FileData {
+public class IO {
 
-    ArrayList<Element> elements = new ArrayList();
-    int cellSize = 10;
-    String fileName;
+    public static ArrayList<Element> readFromFile(File file) throws FileNotFoundException, IOException {
 
-    public FileData(File file, int cellSize)
-            throws IOException {
-            this.cellSize = cellSize;
-            fileName = file.getName();
-            elements = IO.readFromFile(file);
-            //readFromFile(file);
-    }
-/*
-    public void readFromFile(File file)
-            throws FileNotFoundException, IOException {
+        ArrayList<Element> elements = new ArrayList<>();
+        int n = 0;
         String[] lineParts;
         String line;
         FileReader fr = new FileReader(file);
@@ -101,26 +92,37 @@ public class FileData {
             }
         }
 
+        return elements;
     }
 
-    public void writeToFile(Board b) throws FileNotFoundException, UnsupportedEncodingException {
-        try (PrintWriter writer = new PrintWriter(fileName + "OUTPUT.txt", "UTF-8")) {
+    public static void writeToFile(Board b, String fileName) throws FileNotFoundException, UnsupportedEncodingException {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH_mm_ss");
+        Calendar cal = Calendar.getInstance();
+        String date = dateFormat.format(cal.getTime());
+        String outputFileName = fileName == null ? date : fileName;
+        
+        try (PrintWriter writer = new PrintWriter(outputFileName+ " - OUTPUT.txt", "UTF-8")) {
             Integer[][] brd = b.getArray();
-            for(int i = 0; i < b.getHeight(); i++)
-                for(int j = 0; j < b.getWidth(); j++)
-                    switch(brd[i][j]) {
-                        case 1: 
-                            writer.println("wire" + i + j); break;
+            for (int i = 0; i < b.getHeight(); i++) {
+                for (int j = 0; j < b.getWidth(); j++) {
+                    switch (brd[i][j]) {
+                        case 1:
+                            writer.println("wire " + j + " " + i);
+                            break;
                         case 2:
-                            writer.println("electrontail" + i + j); break;
+                            writer.println("electrontail " + j + " " + i);
+                            break;
                         case 3:
-                            writer.println("electronhead" + i + j); break;
+                            writer.println("electronhead " + j + " " + i);
+                            break;
                     }
+                }
+            }
             writer.close();
         }
     }
- 
-    private boolean isRecognized(String element) {
+
+    private static boolean isRecognized(String element) {
         return element.equals("diodenormal") || element.equals("diodereversed")
                 || element.equals("electronhead") || element.equals("electrontail")
                 || element.equals("wire") || element.equals("orgate")
@@ -128,7 +130,7 @@ public class FileData {
                 || element.equals("notgate");
     }
 
-    private boolean isCorrectPoint(String x, String y) {
+    private static boolean isCorrectPoint(String x, String y) {
         if (x == null || y == null) {
             return false;
         }
@@ -160,33 +162,13 @@ public class FileData {
                 return false;
             }
         }
-//              JEŚLI CHCE ZEBY PODANIE WSPÓŁRZĘDNEJ POZA ZAKRESEM SKUTOWAŁO BŁEDEM - ODKOMENTOWAC
-//              gdy jest zakomentowane, to pola poza zakresem po prostu nie są rysowane
-//        int maxX = (int) (MyDimensions.getBPwidth()/cellSize) - 1;
-//        int maxY = (int) (MyDimensions.getBPheight()/cellSize - 1);
-//        if(Integer.parseInt(x) < 0 || Integer.parseInt(x) > maxX) return false;
-//        if(Integer.parseInt(y) < 0 || Integer.parseInt(y) > maxY) return false;
-        
+        /* - JEŚLI CHCE ZEBY PODANIE WSPÓŁRZĘDNEJ POZA ZAKRESEM SKUTOWAŁO BŁEDEM - ODKOMENTOWAC
+           // gdy jest zakomentowane, to pola poza zakresem po prostu nie są rysowane
+        int maxX = (int) (MyDimensions.getBPwidth()/cellSize) - 1;
+        int maxY = (int) (MyDimensions.getBPheight()/cellSize - 1);
+        if(Integer.parseInt(x) < 0 || Integer.parseInt(x) > maxX) return false;
+        if(Integer.parseInt(y) < 0 || Integer.parseInt(y) > maxY) return false;
+         */
         return true;
     }
-*/
-    
-    public String getFileName() {
-        return fileName;
-    }
-    
-    public ArrayList<Element> getElementsArrayList() {
-        return elements;
-    }
-
-    
-    @Override
-    public String toString() {
-        String text = "FileData has succesfully read " + elements.size() + " elements: \n";
-        for (Element e : elements) {
-            text += e.toString() + "\n";
-        }
-        return text;
-    }
-
 }

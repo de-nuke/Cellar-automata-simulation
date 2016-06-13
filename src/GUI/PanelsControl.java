@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import ww.Board;
 import ww.Generator;
 
 /**
@@ -23,6 +24,7 @@ public class PanelsControl {
     private BoardPanel bp;
     private BottomButtonPanel bbp;
     private RightButtonPanel rbp;
+    private OptionsPanel op;
     boolean isPlaying = false;
     
     Generator generator;
@@ -40,7 +42,12 @@ public class PanelsControl {
     public void setRightButtonPanel(RightButtonPanel rbp) {
         this.rbp = rbp;
     }
+    
+    public void setOptionsPanel(OptionsPanel op) {
+        this.op = op;
+    }
 
+    /** RightButtonPanel **/
     public void play() {
         if(!isPlaying) {
             generator.start();
@@ -76,7 +83,7 @@ public class PanelsControl {
         }
 
     }
-    
+    /** BottomButtonPanel **/
     public void insertElement(ActionEvent e) {
         JButton btn = (JButton) e.getSource();
         Point tempPoint = new Point(0,0);
@@ -113,4 +120,23 @@ public class PanelsControl {
             } break;
         }
     }
+    
+    /** OptionsPanel **/
+    public void reset() {
+        int width = bp.nH;
+        int height = bp.nV;
+        bp.updateBoard(new Board(width, height));
+        bp.repaint();
+        
+        op.clearTextField();
+        op.clearLabel();
+        
+        generator.setSleepTime(500);
+    }
+
+    public void saveToTxt() {
+        bp.writeToTxt();
+    }
+    
+
 }

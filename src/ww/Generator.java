@@ -185,7 +185,12 @@ public class Generator {
         }
 
     }
-
+    
+    public void setSleepTime(int timeInMs) {
+        if(timeInMs > 0 && timeInMs < 60000) {  //max 1min.
+            sleepTime = timeInMs;
+        }
+    }
     /*****************************************/
     class GenerationThread implements Runnable {
 
