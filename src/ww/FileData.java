@@ -6,7 +6,6 @@
 package ww;
 
 import GUI.ErrorWindow;
-import GUI.MyDimensions;
 import elements.*;
 import elements.Element;
 import elements.Wire;

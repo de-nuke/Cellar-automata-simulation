@@ -3,7 +3,7 @@ wire-0 0 0
 et-0 0 255
 eh-255 0 0
 gap-128 128 128
-size-15
+size-10
 repeat-false
 everytopng-false
 everytotxt-false

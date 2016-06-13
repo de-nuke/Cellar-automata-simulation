@@ -15,10 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 /**
  *
@@ -100,9 +97,19 @@ public class RightButtonPanel extends JPanel implements ActionListener{
             }
         if(btn == singleStep) 
             control.singleStep();
+        if(btn == play)
+            control.play();
+        if(btn == faster) {
+            control.faster();
+        }
+            
+        if(btn == slower)
+            control.slower();
     }
     
     public void setControl(PanelsControl c) {
         this.control = c;
     }
+    
+    
 }

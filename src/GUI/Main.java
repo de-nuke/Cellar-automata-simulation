@@ -28,13 +28,15 @@ public class Main {
             RightButtonPanel  rbp = new RightButtonPanel(RBP_WIDTH,RBP_HEIGHT,Color.red);
             BoardPanel bp = new BoardPanel(BP_WIDTH,BP_HEIGHT,Color.gray, settings);
             BottomButtonPanel bbp = new BottomButtonPanel(BBP_WIDTH, BBP_HEIGHT,Color.GRAY);
+            RestartPanel rp = new RestartPanel(RP_WIDTH, RP_HEIGHT);
             PanelsControl control = new PanelsControl();
+            
             @Override
             public void run() {
-                rbp.setControl(control);
                 bp.setControl(control);
                 bbp.setControl(control);
-                
+                rbp.setControl(control);
+
                 control.setBoardPanel(bp);
                 control.setBottomButtonPanel(bbp);
                 control.setRightButtonPanel(rbp);
@@ -48,6 +50,9 @@ public class Main {
                 c.gridy = 0;
                 c.gridx = 1;
                 m.add(bp,c);
+                c.gridy = 1;
+                c.gridx = 0;
+                m.add(rp,c);
                 c.gridy = 1;
                 c.gridx = 1;
                 m.add(bbp,c);
