@@ -21,7 +21,7 @@ import javax.swing.JPanel;
  *
  * @author Dom
  */
-public class RightButtonPanel extends JPanel implements ActionListener, ControledPanel{
+public class RightButtonPanel extends JPanel implements ActionListener, ControlledPanel{
     PanelsControl control;
     
     private int pWidth;

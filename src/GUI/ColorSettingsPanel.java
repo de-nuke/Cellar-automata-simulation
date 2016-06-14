@@ -16,7 +16,7 @@ import ww.Settings;
  *
  * @author Dom
  */
-public class ColorSettingsPanel extends JPanel implements ActionListener,ControledPanel {
+public class ColorSettingsPanel extends JPanel implements ActionListener,ControlledPanel {
 
     Color[] colors = {
         Color.BLACK, Color.BLUE, Color.CYAN, Color.DARK_GRAY, Color.GRAY,

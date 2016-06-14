@@ -9,6 +9,6 @@ package GUI;
  *
  * @author Dom
  */
-public interface ControledPanel {
+public interface ControlledPanel {
     public void setControl(PanelsControl control);
 }

@@ -16,7 +16,7 @@ import ww.Settings;
  *
  * @author Dom
  */
-public class OtherSettingsPanel extends JPanel implements ActionListener, ControledPanel{
+public class OtherSettingsPanel extends JPanel implements ActionListener, ControlledPanel{
 
     private Settings settings;
     private int w;

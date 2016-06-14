@@ -18,7 +18,7 @@ import javax.swing.*;
  *
  * @author Dom
  */
-public class OptionsPanel extends JPanel implements ActionListener,ControledPanel {
+public class OptionsPanel extends JPanel implements ActionListener,ControlledPanel {
     PanelsControl control;
     
     int pWidth;

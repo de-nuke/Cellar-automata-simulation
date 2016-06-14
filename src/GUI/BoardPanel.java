@@ -26,7 +26,7 @@ import ww.Settings;
  *
  * @author Dom
  */
-public class BoardPanel extends JPanel implements MouseListener, ControledPanel{
+public class BoardPanel extends JPanel implements MouseListener, ControlledPanel{
     PanelsControl control;
             
     int pWidth;
