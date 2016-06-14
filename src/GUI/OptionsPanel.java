@@ -18,7 +18,7 @@ import javax.swing.*;
  *
  * @author Dom
  */
-public class OptionsPanel extends JPanel implements ActionListener {
+public class OptionsPanel extends JPanel implements ActionListener,ControledPanel {
     PanelsControl control;
     
     int pWidth;
@@ -69,6 +69,7 @@ public class OptionsPanel extends JPanel implements ActionListener {
         return new Dimension(pWidth, pHeight);
     }
     
+    @Override
     public void setControl(PanelsControl control) {
         this.control = control;
     }

@@ -16,7 +16,7 @@ import ww.Settings;
  *
  * @author Dom
  */
-public class OtherSettingsPanel extends JPanel implements ActionListener{
+public class OtherSettingsPanel extends JPanel implements ActionListener, ControledPanel{
 
     private Settings settings;
     private int w;
@@ -84,6 +84,7 @@ public class OtherSettingsPanel extends JPanel implements ActionListener{
         }
     }
     
+    @Override
     public void setControl(PanelsControl control) {
         this.control = control;
     }

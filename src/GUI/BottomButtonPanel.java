@@ -16,7 +16,7 @@ import javax.swing.*;
  *
  * @author Dom
  */
-public class BottomButtonPanel extends JPanel implements ActionListener{
+public class BottomButtonPanel extends JPanel implements ActionListener,ControledPanel{
     PanelsControl control;
     
     int pWidth;
@@ -84,6 +84,7 @@ public class BottomButtonPanel extends JPanel implements ActionListener{
         control.insertElement(e);
     }
 
+    @Override
     public void setControl(PanelsControl control) {
         this.control = control;
     }

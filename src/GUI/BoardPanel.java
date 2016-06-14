@@ -26,7 +26,7 @@ import ww.Settings;
  *
  * @author Dom
  */
-public class BoardPanel extends JPanel implements MouseListener{
+public class BoardPanel extends JPanel implements MouseListener, ControledPanel{
     PanelsControl control;
             
     int pWidth;
@@ -93,6 +93,7 @@ public class BoardPanel extends JPanel implements MouseListener{
         }
     }
 
+    @Override
     public void setControl(PanelsControl control) {
         this.control = control;
     }

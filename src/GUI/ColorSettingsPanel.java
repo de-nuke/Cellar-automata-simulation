@@ -16,7 +16,7 @@ import ww.Settings;
  *
  * @author Dom
  */
-public class ColorSettingsPanel extends JPanel implements ActionListener {
+public class ColorSettingsPanel extends JPanel implements ActionListener,ControledPanel {
 
     Color[] colors = {
         Color.BLACK, Color.BLUE, Color.CYAN, Color.DARK_GRAY, Color.GRAY,
@@ -102,5 +102,10 @@ public class ColorSettingsPanel extends JPanel implements ActionListener {
             case "Yellow":
                 
         }
+    }
+
+    @Override
+    public void setControl(PanelsControl control) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
