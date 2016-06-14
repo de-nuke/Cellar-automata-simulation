@@ -6,6 +6,7 @@
 package ww;
 
 import elements.*;
+import java.awt.Dimension;
 import java.util.*;
 
 /**
@@ -123,6 +124,10 @@ public class Board {
 
     public int getHeight() {
         return height;
+    }
+    
+    public Dimension getDimension() {
+        return new Dimension(width, height);
     }
 
     private Integer[][] cloneArray(Integer[][] src) {
