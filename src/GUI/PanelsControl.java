@@ -24,6 +24,7 @@ public class PanelsControl {
     private RightButtonPanel rbp;
     private OptionsPanel op;
     private OtherSettingsPanel osp;
+    private ColorSettingsPanel csp;
     private SettingsWindow s;
     private WireWorldMainWindow m;
     private boolean isPlaying = false;
@@ -157,6 +158,14 @@ public class PanelsControl {
     public void closeApplication(){
         s.dispose();
         m.dispose();
+    }
+
+    void setColorSettingsPanel(ColorSettingsPanel csp) {
+        this.csp = csp;
+    }
+
+    void repaintBoard() {
+        bp.repaint();
     }
 
     

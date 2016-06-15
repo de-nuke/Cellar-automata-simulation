@@ -23,7 +23,11 @@ public class SettingsWindow extends JFrame{
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setSize(a,b);
         setLocationRelativeTo(null);
+        int x = getX();
+        int y = getY();
+        setBounds(x-450, y, a, b);
         setResizable(false); 
+        setAlwaysOnTop(true);
        
     }
 }

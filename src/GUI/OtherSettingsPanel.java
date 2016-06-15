@@ -7,6 +7,7 @@ package GUI;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -33,10 +34,12 @@ public class OtherSettingsPanel extends JPanel implements ActionListener, Contro
     private boolean changesWereMade;
 
     public OtherSettingsPanel(int w, int h, Settings settings) {
+        setLayout(new FlowLayout(SwingConstants.CENTER, 5, 20));
         changesWereMade = false;
         this.w = w;
         this.h = h;
         this.settings = settings;
+        
         actualSize = settings.getCellSize();
         for(int i = 0; i < sizes.length; i++)
             if(sizes[i] == actualSize) {
@@ -47,7 +50,7 @@ public class OtherSettingsPanel extends JPanel implements ActionListener, Contro
         cellSizes.addActionListener(this);
         apply.setEnabled(false);
         apply.addActionListener(this);
-        warning.setForeground(Color.red);
+        warning.setForeground(Color.blue);
         
         add(cellSize);
         add(cellSizes);

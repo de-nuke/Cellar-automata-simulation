@@ -26,7 +26,13 @@ public class OrGate extends Element {
         };
     }
 
+    @Override
     public int[][] getCellsArray() {
         return gateCells;
+    }
+    
+    @Override
+    public int getDelta() {
+        return 1;
     }
 }

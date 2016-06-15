@@ -12,35 +12,45 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import ww.Board;
 
 /**
  *
  * @author Dom
  */
 public class ErrorWindow extends JFrame implements ActionListener {
-    JButton ok = new JButton("OK");
-    JLabel textMessage;
+    private final JButton ok = new JButton("OK");
+    private final JButton insert = new JButton("Insert partially");
+    private final JButton cancel = new JButton("Don't insert");
+    private final JLabel textMessage;
+    private int decision = 0;
     
     public ErrorWindow(String message) {
         super("Error");
         textMessage = new JLabel(message);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(300,150);
         setLocationRelativeTo(null);
         setResizable(false); 
         setLayout(new GridBagLayout());
         ok.addActionListener(this);
+        insert.addActionListener(this);
+        cancel.addActionListener(this);
         add(textMessage);
         GridBagConstraints c = new GridBagConstraints();
         c.gridy = 1;
         add(ok,c);
-        
         setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        dispose();
+        JButton btn = (JButton) e.getSource();
+        if(btn == ok)
+            dispose();
     }
    
+    public int getDecision() {
+        return decision;
+    }
 }

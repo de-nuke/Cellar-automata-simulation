@@ -32,4 +32,8 @@ public class Wire extends Element {
         return wireCells;
     }
 
+    @Override
+    public int getDelta() {
+        return 0;
+    }
 }

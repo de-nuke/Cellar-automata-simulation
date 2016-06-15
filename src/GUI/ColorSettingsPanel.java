@@ -6,7 +6,9 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -17,48 +19,79 @@ import ww.Settings;
  * @author Dom
  */
 public class ColorSettingsPanel extends JPanel implements ActionListener,ControlledPanel {
-
-    Color[] colors = {
+    PanelsControl control;
+    
+    private Color[] colors = {
         Color.BLACK, Color.BLUE, Color.CYAN, Color.DARK_GRAY, Color.GRAY,
         Color.GREEN, Color.LIGHT_GRAY, Color.MAGENTA, Color.ORANGE, Color.PINK,
         Color.RED, Color.WHITE, Color.YELLOW
     };
 
-    String[] colorsNames = {
+    private String[] colorsNames = {
         "Black", "Blue", "Cyan", "Dark grey", "Gray", "Green", "Light gray",
-        "Magenta", "Pink", "Red", "White", "Yellow"
+        "Magenta","Orange" ,"Pink", "Red", "White", "Yellow"
     };
 
-    JLabel wireColor = new JLabel("Wire Color: ");
-    JLabel emptyCellColor = new JLabel("Empty Cell Color: ");
-    JLabel etColor = new JLabel("Electron Tail Color: ");
-    JLabel ehColor = new JLabel("Electron Head Color: ");
-    JLabel warning = new JLabel("Color settings not supported yet");
+    private JLabel wireColor = new JLabel("Wire Color: ");
+    private JLabel emptyCellColor = new JLabel("Empty Cell Color: ");
+    private JLabel etColor = new JLabel("Electron Tail Color: ");
+    private JLabel ehColor = new JLabel("Electron Head Color: ");
 
-    JComboBox<String> wires = new JComboBox<String>(colorsNames);
-    JComboBox<String> empty = new JComboBox<String>(colorsNames);
-    JComboBox<String> heads = new JComboBox<String>(colorsNames);
-    JComboBox<String> tails = new JComboBox<String>(colorsNames);
-
-    int w;
-    int h;
-
+    private JComboBox<Color> wires = new JComboBox<Color>(colors);
+    private JComboBox<Color> empty = new JComboBox<Color>(colors);
+    private JComboBox<Color> heads = new JComboBox<Color>(colors);
+    private JComboBox<Color> tails = new JComboBox<Color>(colors);
+    
+    private int w;
+    private int h;
+    private int actualWireIndex;
+    private int actualEHIndex;
+    private int actualETIndex;
+    private int actualEmptyIndex;
+    
     Settings settings;
+    
+    Color actualWire;
+    Color actualEH;
+    Color actualET;
+    Color actualEmpty;
 
     public ColorSettingsPanel(int w, int h, Settings settings) {
+        setLayout(new GridLayout(4, 2));
         this.w = w;
         this.h = h;
         this.settings = settings;
-
-        wires.setSelectedIndex(0);
+        actualWire = settings.getWireColor();
+        actualEH = settings.getElectronHeadColor();
+        actualET = settings.getElectronTailColor();
+        actualEmpty = settings.getEmptyCellColor();
+        for(int i = 0; i < colors.length-1; i++) {
+            if(colors[i].equals(actualWire)) {
+                actualWireIndex = i;
+            }
+            if(colors[i].equals(actualEH)) {
+                actualEHIndex = i;
+            }
+            if(colors[i].equals(actualET)) {
+                actualETIndex = i;
+            }
+            if(colors[i].equals(actualEmpty)) {
+                actualEmptyIndex = i;
+            }
+        }
+            
+        wires.setSelectedIndex(actualWireIndex);
         wires.addActionListener(this);
-        empty.setSelectedIndex(11);
+        wires.setRenderer(new MyCellRenderer());
+        empty.setSelectedIndex(actualEmptyIndex);
         empty.addActionListener(this);
-        heads.setSelectedIndex(10);
+        empty.setRenderer(new MyCellRenderer());
+        heads.setSelectedIndex(actualEHIndex);
         heads.addActionListener(this);
-        tails.setSelectedIndex(1);
+        heads.setRenderer(new MyCellRenderer());
+        tails.setSelectedIndex(actualETIndex);
         tails.addActionListener(this);
-        warning.setForeground(Color.red);
+        tails.setRenderer(new MyCellRenderer());
         
         add(wireColor);
         add(wires);
@@ -68,7 +101,6 @@ public class ColorSettingsPanel extends JPanel implements ActionListener,Control
         add(heads);
         add(etColor);
         add(tails);
-        add(warning);
     }
 
     @Override
@@ -80,32 +112,90 @@ public class ColorSettingsPanel extends JPanel implements ActionListener,Control
     public void actionPerformed(ActionEvent e) {
         
         JComboBox cb = (JComboBox) e.getSource();
-        String chosenColor = (String) cb.getSelectedItem();
+        Color chosenColor = (Color) cb.getSelectedItem();
         
-        setColor(chosenColor);
+        if(cb == wires)
+            settings.setWireColor(chosenColor);
+        else if(cb == heads)
+            settings.setEhColor(chosenColor);
+        else if(cb == tails)
+            settings.setEtColor(chosenColor);
+        else if(cb == empty)
+            settings.setEmptyColor(chosenColor);
+        
+        control.repaintBoard();
     }
     
-    private void setColor(String colorname) {
-
-        switch (colorname) {
-            case "Black":
-            case "Blue":
-            case "Cyan":
-            case "Dark grey":
-            case "Gray":
-            case "Green":
-            case "Light gray":
-            case "Magenta":
-            case "Pink":
-            case "Red":
-            case "White":
-            case "Yellow":
-                
-        }
-    }
-
+    
     @Override
     public void setControl(PanelsControl control) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.control = control;
     }
+    
+    class MyCellRenderer extends JButton implements ListCellRenderer {  
+     public MyCellRenderer() {  
+         setOpaque(true); 
+
+     }
+     boolean b=false;
+    @Override
+    public void setBackground(Color bg) {
+        // TODO Auto-generated method stub
+         if(!b)
+         {
+             return;
+         }
+
+        super.setBackground(bg);
+    }
+     public Component getListCellRendererComponent(  
+         JList list,  
+         Object value,  
+         int index,  
+
+         boolean isSelected,  
+         boolean cellHasFocus)  
+     {  
+
+         b=true;
+         setText(" ");           
+         setBackground((Color)value);        
+         b=false;
+         return this;  
+     }  
 }
+         
+}
+
+
+
+
+
+
+/*   public class MyColor extends Color {
+       int rgb;
+        public MyColor(int rgb) {
+            super(rgb);
+            this.rgb = rgb;
+        }
+        @Override
+    public String toString() {
+        String colorName = null;
+        Color c = new Color(rgb);
+        
+        if(c.equals(Color.BLACK)) colorName = "Black";
+        else if(c.equals(Color.BLUE)) colorName = "Blue";
+        else if(c.equals(Color.CYAN)) colorName = "Cyan";
+        else if(c.equals(Color.DARK_GRAY)) colorName = "Dark gray";
+        else if(c.equals(Color.GRAY)) colorName = "Gray";
+        else if(c.equals(Color.GREEN)) colorName = "Green";
+        else if(c.equals(Color.LIGHT_GRAY)) colorName = "Light gray";
+        else if(c.equals(Color.MAGENTA)) colorName = "Magenta";
+        else if(c.equals(Color.ORANGE)) colorName = "Orange";
+        else if(c.equals(Color.PINK)) colorName = "Pink";
+        else if(c.equals(Color.RED)) colorName = "Red";
+        else if(c.equals(Color.WHITE)) colorName = "White";
+        else if(c.equals(Color.YELLOW)) colorName = "YEllow";
+        return colorName;
+    }
+   }*/

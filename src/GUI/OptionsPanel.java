@@ -108,7 +108,7 @@ public class OptionsPanel extends JPanel implements ActionListener,ControlledPan
     }
 
     void numLeft(int numOfGen) {
-        nleft.setText("n left: " + numOfGen);
+        nleft.setText("n left: " + (numOfGen-1));
     }
 
     void showMessage(String message,Color c) {

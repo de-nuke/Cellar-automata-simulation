@@ -5,6 +5,7 @@
  */
 package ww;
 
+import GUI.ErrorWindow;
 import elements.*;
 import java.awt.Dimension;
 import java.util.*;
@@ -93,17 +94,24 @@ public class Board {
             posX = specifiedPosX;
         }
         if (specifiedPosY == null) {
-            posY = e.getPosition().y;
+            posY = e.getPosition().y - e.getDelta();
         } else {
-            posY = specifiedPosY;
+            posY = specifiedPosY - e.getDelta();
         }
-
-        int[][] cellsArray = e.getCellsArray();
-        for (int i = 0; i < e.getHeight(); i++) {
-            for (int j = 0; j < e.getWidth(); j++) {
-                if (i + posY < height && j + posX < width)
-                {
-                    boardInts[i + posY][j + posX] = cellsArray[i][j];
+        
+        //Wyświetlanie informacji o braku miejsca
+        if(posY + e.getHeight() > height || posX + e.getWidth() > width) {
+            System.err.println("Brak miejsca");
+            ErrorWindow ew = new ErrorWindow("Not enough space to insert this element");
+            
+        } else {
+            int[][] cellsArray = e.getCellsArray();
+            for (int i = 0; i < e.getHeight(); i++) {
+                for (int j = 0; j < e.getWidth(); j++) {
+                    if (i + posY < height && j + posX < width)
+                    {
+                        boardInts[i + posY][j + posX] = cellsArray[i][j];
+                    }
                 }
             }
         }

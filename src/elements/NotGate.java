@@ -28,4 +28,9 @@ public class NotGate extends Element {
     public int[][] getCellsArray() {
         return gateCells;
     }
+    
+    @Override
+    public int getDelta() {
+        return 1;
+    }
 }

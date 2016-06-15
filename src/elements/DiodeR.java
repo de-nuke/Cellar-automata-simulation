@@ -27,4 +27,9 @@ public class DiodeR extends Element {
     public int[][] getCellsArray() {
         return diodeCellsX;
     }
+    
+    @Override
+    public int getDelta() {
+        return 1;
+    }
 }

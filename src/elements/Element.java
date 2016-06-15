@@ -18,7 +18,7 @@ public class Element {
     int width;
     int height;
     int cellsArray[][];
-
+    int delta;
     
     protected Element(String n, Point p, int numberOfCells, int w, int h) {
         this.name = n;
@@ -50,7 +50,9 @@ public class Element {
     public int[][] getCellsArray() {
         return cellsArray;
     }
-        
+    public int getDelta(){
+        return 0;
+    }
     @Override
     public String toString() {
         return name + "( "+ position.x + "," + position.y + " ) - Dimensions:  " + width + " x " + height;

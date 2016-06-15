@@ -30,4 +30,9 @@ public class ElectronTail extends Element{
     public int[][] getCellsArray() {
         return electronCells;
     }
+    
+    @Override
+    public int getDelta() {
+        return 0;
+    }
 }

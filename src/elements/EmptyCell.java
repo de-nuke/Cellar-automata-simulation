@@ -26,6 +26,10 @@ public class EmptyCell extends Element {
         }
     }
     
+    @Override
+    public int getDelta() {
+        return 0;
+    }
 //    public int[][] getCellsArray() {
 //        return emptyCells;
 //    }

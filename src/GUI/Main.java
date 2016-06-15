@@ -38,7 +38,7 @@ public class Main {
             OptionsPanel op = new OptionsPanel(RP_WIDTH, RP_HEIGHT);
             PanelsControl control = new PanelsControl();
             
-            ColorSettingsPanel csp = new ColorSettingsPanel(250, 300, settings);
+            ColorSettingsPanel csp = new ColorSettingsPanel(250, 200, settings);
             OtherSettingsPanel osp = new OtherSettingsPanel(250, 300, settings);
 
             @Override
@@ -51,12 +51,14 @@ public class Main {
                 rbp.connectWithSettingsWindow(s);
                 op.setControl(control);
                 osp.setControl(control);
+                csp.setControl(control);
                 
                 control.setBoardPanel(bp);
                 control.setBottomButtonPanel(bbp);
                 control.setRightButtonPanel(rbp);
                 control.setOptionsPanel(op);
                 control.setOtherSettingsPanel(osp);
+                control.setColorSettingsPanel(csp);
                 control.setWindows(s,m);
                 
                 m.setLayout(new GridBagLayout());
