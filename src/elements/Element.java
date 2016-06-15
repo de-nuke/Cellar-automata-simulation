@@ -14,16 +14,14 @@ import java.awt.Point;
 public class Element {
     String name;
     Point position; //left, upper corner
-    int numberOfCells;
     int width;
     int height;
     int cellsArray[][];
     int delta;
     
-    protected Element(String n, Point p, int numberOfCells, int w, int h) {
+    protected Element(String n, Point p,int w, int h) {
         this.name = n;
         this.position = p;
-        this.numberOfCells = numberOfCells;
         this.width = w;
         this.height = h;
     }
@@ -34,10 +32,6 @@ public class Element {
     
     public Point getPosition() {
         return position;
-    }
-    
-    public int getNumberOfCells() {
-        return numberOfCells;
     }
 
     public int getWidth() {

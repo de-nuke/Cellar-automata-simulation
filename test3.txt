@@ -1,0 +1,4 @@
+orgate 2 2
+wire 5 2
+electronhead 7 2
+electrontail 6 2

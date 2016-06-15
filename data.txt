@@ -1,4 +1,4 @@
-wire 71 -1
+wire
 wire 0 1
 orgate 1 10
 xorgate 19 19

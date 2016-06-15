@@ -16,11 +16,11 @@ public class DiodeR extends Element {
     int diodeCellsX[][];
 
     public DiodeR(String n, Point p) {
-        super(n, p, 6 * 3, 6, 3); //6 -width, 3 - height
+        super(n, p, 4, 3); //6 -width, 3 - height
         diodeCellsX = new int[][]{
-            {0, 0, 1, 1, 0, 0},
-            {1, 1, 0, 1, 1, 1},
-            {0, 0, 1, 1, 0, 0}
+            { 0, 1, 1, 0},
+            { 1, 0, 1, 1},
+            { 0, 1, 1, 0}
         };
     }
 

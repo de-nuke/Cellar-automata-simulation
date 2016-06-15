@@ -21,7 +21,7 @@ public class PanelsControl {
 
     private BoardPanel bp;
     private BottomButtonPanel bbp;
-    private RightButtonPanel rbp;
+    private LeftButtonPanel lbp;
     private OptionsPanel op;
     private OtherSettingsPanel osp;
     private ColorSettingsPanel csp;
@@ -42,8 +42,8 @@ public class PanelsControl {
         this.bbp = bbp;
     }
 
-    public void setRightButtonPanel(RightButtonPanel rbp) {
-        this.rbp = rbp;
+    public void setRightButtonPanel(LeftButtonPanel rbp) {
+        this.lbp = rbp;
     }
     
     public void setOptionsPanel(OptionsPanel op) {
@@ -130,7 +130,7 @@ public class PanelsControl {
     public void reset() {
         bp.reset();
         op.reset();
-        rbp.reset();
+        lbp.reset();
         generator.stop();
         generator.setSleepTime(500);
     }
@@ -144,7 +144,7 @@ public class PanelsControl {
     }
 
     public void genStopped() {
-        rbp.reset();
+        lbp.reset();
     }
 
     public void numLeft(int numOfGen) {

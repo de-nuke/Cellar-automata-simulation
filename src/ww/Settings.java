@@ -138,21 +138,16 @@ public class Settings {
         this.cellSize = cellSize;
     }
 
-    public void setRepeatGeneration(boolean repeatGeneration) {
-        this.repeatGeneration = repeatGeneration;
-    }
-
-    public void setWriteEveryFileToPng(boolean writeEveryFileToPng) {
-        this.writeEveryFileToPng = writeEveryFileToPng;
-    }
-
-    public void setWriteEveryFileToTxt(boolean writeEveryFileToTxt) {
-        this.writeEveryFileToTxt = writeEveryFileToTxt;
-    }
-
-    public void saveSettngs() {
-        
-    }
-    
+//    public void setRepeatGeneration(boolean repeatGeneration) {
+//        this.repeatGeneration = repeatGeneration;
+//    }
+//
+//    public void setWriteEveryFileToPng(boolean writeEveryFileToPng) {
+//        this.writeEveryFileToPng = writeEveryFileToPng;
+//    }
+//
+//    public void setWriteEveryFileToTxt(boolean writeEveryFileToTxt) {
+//        this.writeEveryFileToTxt = writeEveryFileToTxt;
+//    }
     
 }

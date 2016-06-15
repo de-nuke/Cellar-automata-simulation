@@ -18,7 +18,7 @@ public class ElectronHead extends Element{
     int[][] electronCells;
     
     public ElectronHead(String n, Point p, int width, int height) {
-        super(n,p, width*height, width, height);
+        super(n,p, width, height);
         electronCells = new int[height][width];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {

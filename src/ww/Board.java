@@ -57,7 +57,6 @@ public class Board {
 
     @Override
     public String toString() {
-
         String text = "";
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
@@ -102,7 +101,7 @@ public class Board {
         //Wyświetlanie informacji o braku miejsca
         if(posY + e.getHeight() > height || posX + e.getWidth() > width) {
             System.err.println("Brak miejsca");
-            ErrorWindow ew = new ErrorWindow("Not enough space to insert this element");
+            ErrorWindow ew = new ErrorWindow("Not enough space to insert element");
             
         } else {
             int[][] cellsArray = e.getCellsArray();

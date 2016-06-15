@@ -13,7 +13,7 @@ import java.awt.Dimension;
  * @author Dom
  */
 public class Generator {
-    PanelsControl control;
+    private PanelsControl control;
     
     private BoardPanel bp;
     private GenerationThread genThread;

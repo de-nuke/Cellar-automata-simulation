@@ -15,14 +15,24 @@ public class OrGate extends Element {
 
     int gateCells[][];
 
+//    public OrGate(String n, Point p) {
+//        super(n, p, 7, 5); //6 -width, 3 - height
+//        gateCells = new int[][]{
+//            {0, 0, 1, 1, 0, 0, 0},
+//            {1, 1, 0, 0, 1, 0, 0},
+//            {0, 0, 0, 1, 1, 1, 1},
+//            {1, 1, 0, 0, 1, 0, 0},
+//            {0, 0, 1, 1, 0, 0, 0}
+//        };
+//    }
     public OrGate(String n, Point p) {
-        super(n, p, 7 * 5, 7, 5); //6 -width, 3 - height
+        super(n, p, 3, 3); //6 -width, 3 - height
         gateCells = new int[][]{
-            {0, 0, 1, 1, 0, 0, 0},
-            {1, 1, 0, 0, 1, 0, 0},
-            {0, 0, 0, 1, 1, 1, 1},
-            {1, 1, 0, 0, 1, 0, 0},
-            {0, 0, 1, 1, 0, 0, 0}
+            
+            {0, 1, 0},
+            {1, 1, 1},
+            {0, 1, 0}
+            
         };
     }
 

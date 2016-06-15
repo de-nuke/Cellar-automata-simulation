@@ -15,7 +15,7 @@ public class NotGate extends Element {
     int gateCells[][];
 
     public NotGate(String n, Point p) {
-        super(n, p, 8 * 5, 8, 5); //6 -width, 3 - height
+        super(n, p, 8, 5); //6 -width, 3 - height
         gateCells = new int[][]{
             {0, 0, 1, 1, 0, 0, 0, 0},
             {1, 1, 0, 0, 1, 0, 1, 1},

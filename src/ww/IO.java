@@ -38,7 +38,7 @@ public class IO {
         while ((line = br.readLine()) != null) {
             lineParts = line.split("\\s+");
 
-            if (isRecognized(lineParts[0]) && isCorrectPoint(lineParts[1], lineParts[2])) {
+            if (lineParts.length == 3 && isRecognized(lineParts[0]) && isCorrectPoint(lineParts[1], lineParts[2])) {
                 Point p = new Point(Integer.parseInt(lineParts[1]), Integer.parseInt(lineParts[2]));
                 switch (lineParts[0]) {
                     case "wire": {

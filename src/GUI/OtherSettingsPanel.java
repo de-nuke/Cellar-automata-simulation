@@ -80,7 +80,6 @@ public class OtherSettingsPanel extends JPanel implements ActionListener, Contro
             JButton btn = (JButton) e.getSource();
             if(btn == apply && changesWereMade) {
                 control.reset();
-                settings.saveSettngs();
                 apply.setEnabled(false);
                 changesWereMade = false;
             }

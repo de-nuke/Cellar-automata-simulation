@@ -21,7 +21,7 @@ import javax.swing.JPanel;
  *
  * @author Dom
  */
-public class RightButtonPanel extends JPanel implements ActionListener, ControlledPanel{
+public class LeftButtonPanel extends JPanel implements ActionListener, ControlledPanel{
     PanelsControl control;
     
     private int pWidth;
@@ -38,7 +38,7 @@ public class RightButtonPanel extends JPanel implements ActionListener, Controll
     
     File f;
     
-    public RightButtonPanel(int w, int h) {
+    public LeftButtonPanel(int w, int h) {
         this.pHeight = h;
         this.pWidth = w;
         isPlaying = false;

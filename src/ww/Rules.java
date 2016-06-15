@@ -13,8 +13,8 @@ import java.awt.Dimension;
  */
 public class Rules {
     
-    int w;
-    int h;
+    private int w;
+    private int h;
     
     public Rules(Dimension boardDimension) {
         this.w = boardDimension.width;
