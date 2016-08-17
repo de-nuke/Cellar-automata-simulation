@@ -28,8 +28,9 @@ public class PanelsControl {
     private SettingsWindow s;
     private WireWorldMainWindow m;
     private boolean isPlaying = false;
-    
+    private Element pickedElement = null;
     private Generator generator;
+    private AdditionalPanel ap;
     
 
     public void setBoardPanel(BoardPanel bp) {
@@ -38,6 +39,10 @@ public class PanelsControl {
         generator.setControl(this);
     }
 
+    public void setAdditionalPanel(AdditionalPanel ap) {
+        this.ap = ap;
+    } 
+    
     public void setBottomButtonPanel(BottomButtonPanel bbp) {
         this.bbp = bbp;
     }
@@ -166,6 +171,14 @@ public class PanelsControl {
 
     void repaintBoard() {
         bp.repaint();
+    }
+
+    void setPickedElement(Element pickedElement) {
+        this.pickedElement = pickedElement;
+    }
+
+    void showElementPreview() {
+        ap.showElementPreview(pickedElement);
     }
 
     

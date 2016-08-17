@@ -47,6 +47,7 @@ public class WireWorld {
             public void run() {
                 m = new WireWorldMainWindow();
                 s = new SettingsWindow();
+                ap.setControl(control);
                 bp.setControl(control);
                 bbp.setControl(control);
                 lbp.setControl(control);
@@ -55,6 +56,7 @@ public class WireWorld {
                 osp.setControl(control);
                 csp.setControl(control);
                 
+                control.setAdditionalPanel(ap);
                 control.setBoardPanel(bp);
                 control.setBottomButtonPanel(bbp);
                 control.setRightButtonPanel(lbp);

@@ -129,6 +129,8 @@ public class BoardPanel extends JPanel implements MouseListener, ControlledPanel
     public void putElement(Element e) {
         System.out.println("Element has been chosen: " + e.getName());
         pickedElement = e;
+        control.setPickedElement(pickedElement);
+        control.showElementPreview();
     }
 
     @Override
