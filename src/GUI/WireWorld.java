@@ -37,10 +37,12 @@ public class WireWorld {
             BottomButtonPanel bbp = new BottomButtonPanel(BBP_WIDTH, BBP_HEIGHT, Color.GRAY);
             OptionsPanel op = new OptionsPanel(RP_WIDTH, RP_HEIGHT);
             PanelsControl control = new PanelsControl();
-            
+            AdditionalPanel ap = new AdditionalPanel(SP_WIDTH, SP_HEIGHT);
+            AdditionalPanel ap2 = new AdditionalPanel(SP_WIDTH, SP_WIDTH);
             ColorSettingsPanel csp = new ColorSettingsPanel(250, 200, settings);
             OtherSettingsPanel osp = new OtherSettingsPanel(250, 300, settings);
 
+            
             @Override
             public void run() {
                 m = new WireWorldMainWindow();
@@ -65,9 +67,11 @@ public class WireWorld {
                 s.setLayout(new GridBagLayout());
                 GridBagConstraints c = new GridBagConstraints();
                 c.gridy = 0; c.gridx = 0;  m.add(lbp, c);
-                c.gridy = 0; c.gridx = 1; m.add(bp, c);
+                c.gridy = 0; c.gridx = 1; m.add(ap, c);
+                c.gridy = 0; c.gridx = 2; m.add(bp, c);
                 c.gridy = 1;  c.gridx = 0; m.add(op, c);
-                c.gridy = 1; c.gridx = 1; m.add(bbp, c);
+                //c.gridy = 1; c.gridx = 1; m.add(sp2, c);
+                c.gridy = 1; c.gridx = 2; m.add(bbp, c);
                 
                 c.gridy = 0; c.gridx = 0; s.add(csp,c);
                 c.gridy = 1; c.gridx = 0; s.add(osp,c);

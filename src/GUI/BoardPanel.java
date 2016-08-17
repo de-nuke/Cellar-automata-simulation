@@ -27,35 +27,37 @@ import ww.Settings;
  * @author Dom
  */
 public class BoardPanel extends JPanel implements MouseListener, ControlledPanel{
-    PanelsControl control;
+    private PanelsControl control;
             
-    int pWidth;
-    int pHeight;
-    File f;
-    FileData fd;
-    Board b;
-    Integer [][]brd;
-    int nH; //number of cells horizontally
-    int nV; //number of cells vertically
-    int cellSize; //in pixels
-    Settings settings;
-    Timer timerClearMsg = new Timer(1000, new ActionListener() {
+    private final int pWidth;
+    private final int pHeight;
+    private File f;
+    private FileData fd;
+    private Board b;
+    private Integer [][]brd;
+    private int nH; //number of cells horizontally
+    private int nV; //number of cells vertically
+    private int cellSize; //in pixels
+    private final Settings settings;
+    private final Timer timerClearMsg;
+    private Element pickedElement = null;
+    
+    public BoardPanel(int w, int h, Color c, Settings s) throws IOException {
+        setBackground(c);
+        setBorder(new LineBorder(Color.BLACK));
+        
+        this.settings = s;
+        this.pHeight = h;
+        this.pWidth = w;
+        
+        this.timerClearMsg = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
                 control.showMessage("", Color.BLACK);
             }
         });
-
-    
-    Element pickedElement = null;
-    
-    public BoardPanel(int w, int h, Color c, Settings s) throws IOException {
-        setBackground(c);
-        setBorder(new LineBorder(Color.BLACK));
-        this.settings = s;
-        this.pHeight = h;
-        this.pWidth = w;
         timerClearMsg.setRepeats(false);
+        
         nH = (int)(w/settings.getCellSize());
         nV = (int)(h/settings.getCellSize());
         b = new Board(nH, nV);
@@ -73,21 +75,21 @@ public class BoardPanel extends JPanel implements MouseListener, ControlledPanel
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Color firstColor = settings.getEmptyCellColor();
-        Color secondColor = settings.getWireColor();
-        Color thirdColor = settings.getElectronTailColor();
-        Color fourthColor = settings.getElectronHeadColor();
+        Color emptyCellColor = settings.getEmptyCellColor();
+        Color wireColor = settings.getWireColor();
+        Color etColor = settings.getElectronTailColor();
+        Color ehColor = settings.getElectronHeadColor();
          
         for(int i = 0; i < nV; i++) {
             for(int j = 0; j < nH; j++) {
                 if(brd[i][j] == 0) 
-                    g.setColor(firstColor);
+                    g.setColor(emptyCellColor);
                 else if(brd[i][j] == 1)
-                    g.setColor(secondColor);
+                    g.setColor(wireColor);
                 else if(brd[i][j] == 2)
-                    g.setColor(thirdColor);
+                    g.setColor(etColor);
                 else if(brd[i][j] == 3)
-                    g.setColor(fourthColor);
+                    g.setColor(ehColor);
                 g.fillRect(j*cellSize, i*cellSize, cellSize -1  , cellSize - 1 );
             }
         }
@@ -98,7 +100,7 @@ public class BoardPanel extends JPanel implements MouseListener, ControlledPanel
         this.control = control;
     }
     
-    public void takeFile(File file){
+    private void takeFile(File file){
         this.f = file;
         try {
             fd = new FileData(f, settings.getCellSize());
@@ -125,7 +127,7 @@ public class BoardPanel extends JPanel implements MouseListener, ControlledPanel
     }
     
     public void putElement(Element e) {
-        System.out.println("Wykonałem putElement");
+        System.out.println("Element has been chosen: " + e.getName());
         pickedElement = e;
     }
 

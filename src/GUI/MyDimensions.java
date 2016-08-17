@@ -14,16 +14,18 @@ import java.awt.Dimension;
 public class MyDimensions {
     static int MAIN_WIN_HEIGH = 650;
     static int MAIN_WIN_WIDTH = (int) (MAIN_WIN_HEIGH * 1.618);
-    static int RBP_WIDTH = 270; 
+    static int RBP_WIDTH = 210; 
     static int RBP_HEIGHT = 430;
     static int BP_WIDTH = 700;
     static int BP_HEIGHT = 430;
     static int BBP_WIDTH = 700;
     static int BBP_HEIGHT = 144;
-    static int RP_WIDTH = 270;
+    static int RP_WIDTH = 210;
     static int RP_HEIGHT = 144;
-    static Dimension BIG_BTN = new Dimension(250, 86);
-    static Dimension SMALL_BTN = new Dimension(123, 25);
+    static int SP_WIDTH = 100;
+    static int SP_HEIGHT = BP_HEIGHT;
+    static Dimension BIG_BTN = new Dimension(190, 86);
+    static Dimension SMALL_BTN = new Dimension(93, 25);
     static Dimension ELMNT_BTN = new Dimension(130, 60);
     public static int getBPwidth() {
         return BP_WIDTH;

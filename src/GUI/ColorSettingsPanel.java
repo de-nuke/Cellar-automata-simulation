@@ -19,7 +19,7 @@ import ww.Settings;
  * @author Dom
  */
 public class ColorSettingsPanel extends JPanel implements ActionListener,ControlledPanel {
-    PanelsControl control;
+    private PanelsControl control;
     
     private Color[] colors = {
         Color.BLACK, Color.BLUE, Color.CYAN, Color.DARK_GRAY, Color.GRAY,
@@ -49,12 +49,12 @@ public class ColorSettingsPanel extends JPanel implements ActionListener,Control
     private int actualETIndex;
     private int actualEmptyIndex;
     
-    Settings settings;
+    private Settings settings;
     
-    Color actualWire;
-    Color actualEH;
-    Color actualET;
-    Color actualEmpty;
+    private Color actualWire;
+    private Color actualEH;
+    private Color actualET;
+    private Color actualEmpty;
 
     public ColorSettingsPanel(int w, int h, Settings settings) {
         setLayout(new GridLayout(4, 2));

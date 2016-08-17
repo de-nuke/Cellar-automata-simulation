@@ -12,7 +12,7 @@ import java.awt.Point;
  * @author Dom
  */
 public class NotGate extends Element {
-    int gateCells[][];
+    private int gateCells[][];
 
     public NotGate(String n, Point p) {
         super(n, p, 8, 5); //6 -width, 3 - height

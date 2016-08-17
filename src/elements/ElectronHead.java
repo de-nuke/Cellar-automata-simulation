@@ -14,8 +14,7 @@ import java.awt.Point;
  */
 public class ElectronHead extends Element{
     
-    Color color = Color.RED;
-    int[][] electronCells;
+    private int[][] electronCells;
     
     public ElectronHead(String n, Point p, int width, int height) {
         super(n,p, width, height);

@@ -13,7 +13,7 @@ import java.awt.Point;
  */
 public class EmptyCell extends Element {
     
-    int[][]emptyCells;
+    private int[][]emptyCells;
     
     public EmptyCell(String n, Point p,int width, int height ) {
         super(n,p,width,height); //niech sie da okreslax ile na ile ma byc wstawionych pustych

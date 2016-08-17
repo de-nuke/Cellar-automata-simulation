@@ -17,23 +17,23 @@ import javax.swing.*;
  * @author Dom
  */
 public class BottomButtonPanel extends JPanel implements ActionListener,ControlledPanel{
-    PanelsControl control;
+    private PanelsControl control;
     
-    int pWidth;
-    int pHeight;
+    private final int pWidth;
+    private final int pHeight;
    
-    JButton empty = new JButton("Empty");
-    JButton wire = new JButton("Wire");
-    JButton eh = new JButton("ElectronHead");
-    JButton et = new JButton("ElectronTail");
-    JButton diodeN = new JButton("Diode Normal");
-    JButton diodeR = new JButton("Diode Reversed");
-    JButton orgate = new JButton("OR gate");
-    JButton xorgate = new JButton("XOR gate");
-    JButton andgate = new JButton("AND gate");
-    JButton notgate = new JButton("NOT gate");
+    private final JButton empty = new JButton("Empty");
+    private final JButton wire = new JButton("Wire");
+    private final JButton eh = new JButton("ElectronHead");
+    private final JButton et = new JButton("ElectronTail");
+    private final JButton diodeN = new JButton("Diode Normal");
+    private final JButton diodeR = new JButton("Diode Reversed");
+    private final JButton orgate = new JButton("OR gate");
+    private final JButton xorgate = new JButton("XOR gate");
+    private final JButton andgate = new JButton("AND gate");
+    private final JButton notgate = new JButton("NOT gate");
     
-    File f;
+    private File f;
     
     public BottomButtonPanel(int w, int h, Color c) {
         this.pHeight = h;

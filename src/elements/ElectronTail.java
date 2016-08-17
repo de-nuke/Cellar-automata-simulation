@@ -13,9 +13,7 @@ import java.awt.Point;
  * @author Dom
  */
 public class ElectronTail extends Element{
-    
-    Color color = Color.RED;
-    int[][] electronCells;
+    private int[][] electronCells;
     
     public ElectronTail(String n, Point p, int width, int height) {
         super(n,p, width, height);

@@ -14,7 +14,7 @@ import java.awt.Point;
  */
 public class Wire extends Element {
 
-    int[][] wireCells;
+    private int[][] wireCells;
 
     Color color = Color.BLACK;
 

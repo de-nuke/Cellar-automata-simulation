@@ -12,12 +12,12 @@ import java.awt.Point;
  * @author Dom
  */
 public class Element {
-    String name;
-    Point position; //left, upper corner
-    int width;
-    int height;
-    int cellsArray[][];
-    int delta;
+    private String name;
+    private Point position; //left, upper corner
+    private int width;
+    private int height;
+    protected int cellsArray[][];
+    private int delta;
     
     protected Element(String n, Point p,int w, int h) {
         this.name = n;

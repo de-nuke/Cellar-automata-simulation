@@ -14,19 +14,19 @@ import java.io.*;
  */
 public class Settings {
 
-    Color ehColor; //electronHead
-    Color etColor; //electronTail
-    Color emptyColor;
-    Color wireColor;
+    private Color ehColor; //electronHead
+    private Color etColor; //electronTail
+    private Color emptyColor;
+    private Color wireColor;
 
-    Color gapsBetweenCellsColor;
+    private Color gapsBetweenCellsColor;
 
-    int cellSize;
-    boolean repeatGeneration;
-    boolean writeEveryFileToPng;
-    boolean writeEveryFileToTxt;
+    private int cellSize;
+    private boolean repeatGeneration;
+    private boolean writeEveryFileToPng;
+    private boolean writeEveryFileToTxt;
     
-    String[] settings = new String[9];
+    private String[] settings = new String[9];
 
     public Settings() {
         FileReader fr;

@@ -19,19 +19,19 @@ import javax.swing.*;
  * @author Dom
  */
 public class OptionsPanel extends JPanel implements ActionListener,ControlledPanel {
-    PanelsControl control;
+    private PanelsControl control;
     
-    int pWidth;
-    int pHeight;
+    private int pWidth;
+    private int pHeight;
     
-    JButton reset = new JButton("Reset");
-    JButton quit = new JButton("Quit");
-    JButton apply = new JButton("Apply");
-    JButton toTxt = new JButton("Save to txt");
+    private JButton reset = new JButton("Reset");
+    private JButton quit = new JButton("Quit");
+    private JButton apply = new JButton("Apply");
+    private JButton toTxt = new JButton("Save to txt");
     
-    JLabel n = new JLabel("n = ");
-    JLabel nleft = new JLabel("");
-    JLabel msg = new JLabel("");
+    private JLabel n = new JLabel("n = ");
+    private JLabel nleft = new JLabel("");
+    private JLabel msg = new JLabel("");
     private JTextField tf = new JTextField("n");
     
     

@@ -13,7 +13,7 @@ import java.awt.Point;
  */
 public class AndGate extends Element {
 
-    int gateCells[][];
+    private int gateCells[][];
 
 //    public AndGate(String n, Point p) {
 //        super(n, p, 15, 8); //6 -width, 3 - height

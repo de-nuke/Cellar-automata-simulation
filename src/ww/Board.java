@@ -26,8 +26,8 @@ public class Board {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
 
-    Integer[][] boardInts;
-    int width, height;
+    private Integer[][] boardInts;
+    private int width, height;
     
     public Board(int width, int height) {
         boardInts = new Integer[height][width];

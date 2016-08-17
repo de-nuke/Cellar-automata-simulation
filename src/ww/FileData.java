@@ -16,9 +16,9 @@ import java.util.ArrayList;
  */
 public class FileData {
 
-    ArrayList<Element> elements = new ArrayList();
-    int cellSize = 10;
-    String fileName;
+    private ArrayList<Element> elements = new ArrayList();
+    private int cellSize = 10;
+    private String fileName;
 
     public FileData(File file, int cellSize)
             throws IOException {

@@ -17,12 +17,14 @@ import java.io.File;
 import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 /**
  *
  * @author Dom
  */
 public class LeftButtonPanel extends JPanel implements ActionListener, ControlledPanel{
-    PanelsControl control;
+    private PanelsControl control;
     
     private int pWidth;
     private int pHeight;
@@ -34,9 +36,9 @@ public class LeftButtonPanel extends JPanel implements ActionListener, Controlle
     private JButton loadFile = new JButton("Load file");
     private JButton settings = new JButton("Settings");
     private JButton restart = new JButton("Restart");
-    SettingsWindow s;
+    private SettingsWindow s;
     
-    File f;
+    private File f;
     
     public LeftButtonPanel(int w, int h) {
         this.pHeight = h;
@@ -44,14 +46,19 @@ public class LeftButtonPanel extends JPanel implements ActionListener, Controlle
         isPlaying = false;
         setLayout(new GridBagLayout());
         
+        //setBorder(new LineBorder(Color.BLACK));
         JPanel p1 = new JPanel(new FlowLayout());
         JPanel p2 = new JPanel(new FlowLayout());
         JPanel p3 = new JPanel(new FlowLayout());
         
-        p1.setPreferredSize(new Dimension(270, 184));
-        p2.setPreferredSize(new Dimension(270, 60));
-        p3.setPreferredSize(new Dimension(270, 184));
+        p1.setPreferredSize(new Dimension(210, 184));
+        p2.setPreferredSize(new Dimension(210, 60));
+        p3.setPreferredSize(new Dimension(210, 184));
         
+        
+//        p1.setBorder(new LineBorder(Color.BLACK));
+//        p2.setBorder(new LineBorder(Color.BLACK));
+//        p3.setBorder(new LineBorder(Color.BLACK));
         play.setPreferredSize(BIG_BTN);
         play.addActionListener(this);
         singleStep.setPreferredSize(BIG_BTN);

@@ -13,7 +13,7 @@ import java.awt.Point;
  */
 public class DiodeR extends Element {
 
-    int diodeCellsX[][];
+    private int diodeCellsX[][];
 
     public DiodeR(String n, Point p) {
         super(n, p, 4, 3); //6 -width, 3 - height

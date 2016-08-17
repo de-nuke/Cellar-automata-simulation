@@ -13,7 +13,7 @@ import java.awt.Point;
  */
 public class XorGate extends Element {
 
-    int gateCells[][];
+    private int gateCells[][];
 
 //    public XorGate(String n, Point p) {
 //        super(n, p, 10, 7); //6 -width, 3 - height

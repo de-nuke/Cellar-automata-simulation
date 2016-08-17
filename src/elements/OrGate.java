@@ -13,7 +13,7 @@ import java.awt.Point;
  */
 public class OrGate extends Element {
 
-    int gateCells[][];
+    private int gateCells[][];
 
 //    public OrGate(String n, Point p) {
 //        super(n, p, 7, 5); //6 -width, 3 - height
