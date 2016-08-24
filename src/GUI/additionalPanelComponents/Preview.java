@@ -80,7 +80,7 @@ public class Preview extends JPanel {
         };
         previewPanel.setPreferredSize(new Dimension(w - 10, w - 10));
         previewPanel.setOpaque(true);
-        previewPanel.setBackground(Color.red);
+        previewPanel.setBackground(null);
 
         add(text1);
         add(text2);

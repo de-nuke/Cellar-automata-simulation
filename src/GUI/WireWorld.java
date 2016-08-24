@@ -41,7 +41,7 @@ public class WireWorld {
             AdditionalPanel ap2 = new AdditionalPanel(SP_WIDTH, SP_WIDTH);
             ColorSettingsPanel csp = new ColorSettingsPanel(250, 200, settings);
             OtherSettingsPanel osp = new OtherSettingsPanel(250, 300, settings);
-
+            GameOfLifeButtonPanel golp = new GameOfLifeButtonPanel(BBP_WIDTH, BBP_HEIGHT);
             
             @Override
             public void run() {
@@ -55,10 +55,12 @@ public class WireWorld {
                 op.setControl(control);
                 osp.setControl(control);
                 csp.setControl(control);
+                golp.setControl(control);
                 
                 control.setAdditionalPanel(ap);
                 control.setBoardPanel(bp);
                 control.setBottomButtonPanel(bbp);
+                control.setGameOfLifePanel(golp);
                 control.setRightButtonPanel(lbp);
                 control.setOptionsPanel(op);
                 control.setOtherSettingsPanel(osp);
@@ -74,10 +76,11 @@ public class WireWorld {
                 c.gridy = 1;  c.gridx = 0; m.add(op, c);
                 //c.gridy = 1; c.gridx = 1; m.add(sp2, c);
                 c.gridy = 1; c.gridx = 2; m.add(bbp, c);
-                
                 c.gridy = 0; c.gridx = 0; s.add(csp,c);
                 c.gridy = 1; c.gridx = 0; s.add(osp,c);
 
+                control.setCurrentPanel(bbp, c);
+                
                 m.setVisible(true);
             }
         });

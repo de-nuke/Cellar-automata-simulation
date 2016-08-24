@@ -7,11 +7,16 @@ package GUI;
 
 import elements.*;
 import java.awt.Color;
+import java.awt.GridBagConstraints;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import javax.swing.JButton;
+import javax.swing.JPanel;
+import ww.GameOfLifeRules;
 import ww.Generator;
+import ww.Rules;
+import ww.WireWorldRules;
 
 /**
  *
@@ -28,10 +33,12 @@ public class PanelsControl {
     private SettingsWindow s;
     private WireWorldMainWindow m;
     private boolean isPlaying = false;
+    private JPanel currentPanel = null;
+    private GridBagConstraints c;
     private Element pickedElement = null;
     private Generator generator;
     private AdditionalPanel ap;
-    
+    private GameOfLifeButtonPanel golp;
 
     public void setBoardPanel(BoardPanel bp) {
         this.bp = bp;
@@ -98,10 +105,12 @@ public class PanelsControl {
         JButton btn = (JButton) e.getSource();
         Point tempPoint = new Point(0,0);
         switch(btn.getText()) {
-            case "Empty": {
+            case "Empty": 
+            case "Dead cell" :{
                 bp.putElement(new EmptyCell("empty", tempPoint, 1, 1));
             } break;
-            case "Wire": {
+            case "Wire":
+            case "Living cell" :{
                 bp.putElement(new Wire("wire", tempPoint, 1,1));
             } break;
             case "ElectronHead": {
@@ -128,6 +137,7 @@ public class PanelsControl {
             case "NOT gate": {
                 bp.putElement(new NotGate("notgate", tempPoint)); 
             } break;
+            
         }
     }
     
@@ -148,6 +158,10 @@ public class PanelsControl {
         generator.setNumOfGen(n);
     }
 
+    public void setRules(Rules rules){
+        generator.setRules(rules);
+    }
+    
     public void genStopped() {
         lbp.reset();
     }
@@ -179,6 +193,38 @@ public class PanelsControl {
 
     void showElementPreview() {
         ap.showElementPreview(pickedElement);
+    }
+    
+    public void switchGame() {
+        if(currentPanel != null) {
+            System.out.println("currentPanel nie jest null");
+            if(currentPanel == bbp) {
+                System.out.println("Current panel == bbp");
+                m.remove(bbp);
+                c.gridy = 1; c.gridx = 2; m.add(golp, c);
+                currentPanel = golp;
+                generator.setRules(new GameOfLifeRules(bp.getBoard().getDimension()));
+            } else if(currentPanel == golp) {
+                System.out.println("Current panel == golp");
+                m.remove(golp);
+                c.gridy = 1; c.gridx = 2; m.add(bbp, c);
+                currentPanel = bbp;
+                generator.setRules(new WireWorldRules(bp.getBoard().getDimension()));
+            }
+        }
+        else System.err.println("Aaaaaaa");
+        m.revalidate();
+        m.repaint();
+        System.err.println("Jestem w switch game");
+    }
+
+    void setGameOfLifePanel(GameOfLifeButtonPanel golp) {
+        this.golp = golp;
+    }
+    
+    void setCurrentPanel(JPanel currentPanel, GridBagConstraints c) {
+        this.currentPanel = currentPanel;
+        this.c = c;
     }
 
     

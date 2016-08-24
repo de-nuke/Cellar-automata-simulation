@@ -23,6 +23,7 @@ public class AdditionalPanel extends JPanel{
     private int pHeight;
     
     private Preview previewPanel;
+    private Switching switching;
 
     public AdditionalPanel(int w, int h) throws IOException {
         setLayout(new FlowLayout());
@@ -31,7 +32,7 @@ public class AdditionalPanel extends JPanel{
         pWidth = w;
         pHeight = h;
         
-        JPanel switching = new Switching(this.getBackground(), pWidth, pHeight/3);
+        switching = new Switching(this.getBackground(), pWidth, pHeight/3);
         previewPanel = new Preview(this.getBackground(), pWidth, pHeight/3);
         add(switching);
         add(previewPanel);
@@ -44,6 +45,7 @@ public class AdditionalPanel extends JPanel{
     
     public void setControl(PanelsControl control) {
         this.control = control;
+        switching.setControl(control);
     }
 
     void showElementPreview(Element pickedElement) {

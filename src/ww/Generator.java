@@ -19,10 +19,17 @@ public class Generator {
     private GenerationThread genThread;
     private int sleepTime = 500;
     private int numOfGen = 0;
+    private Rules rules;
+    
     public Generator(BoardPanel bp) {
         this.bp = bp;
+        rules = new WireWorldRules(bp.getBoard().getDimension());
     }
-
+    
+    public void setRules(Rules rules) {
+        this.rules = rules; 
+    }
+    
     public void transform() {
         Board current = bp.getBoard();
         Board transformed = new Board(current);
@@ -31,7 +38,7 @@ public class Generator {
         Integer[][] brd2 = transformed.getArray();
 
         Dimension boardDimension = current.getDimension();
-        Rules rules = new Rules(boardDimension);
+        //Rulesvv rules = new Rulesvv(boardDimension);
         if (current == transformed) {
             System.out.println("Ten sam adres tablic");
         }

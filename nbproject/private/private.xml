@@ -3,15 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/SettingsWindow.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/PanelsControl.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/elements/Element.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/BottomButtonPanel.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/GameOfLifeButtonPanel.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/ww/Generator.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/additionalPanelComponents/Preview.java</file>
             <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/WireWorld.java</file>
-            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/ww/Settings.java</file>
-            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/SwitchPanel.java</file>
-            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/LeftButtonPanel.java</file>
-            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/WireWorldMainWindow.java</file>
-            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/OptionsPanel.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/AdditionalPanel.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/additionalPanelComponents/Switching.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/ww/Rules.java</file>
             <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/BoardPanel.java</file>
-            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/MyDimensions.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/GUI/ControlledPanel.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/ww/WireWorldRules.java</file>
+            <file>file:/C:/Users/Dom/Documents/NetBeansProjects/ww/src/ww/GameOfLifeRules.java</file>
         </group>
     </open-files>
 </project-private>

@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -26,7 +27,7 @@ import ww.Settings;
  *
  * @author Dom
  */
-public class BoardPanel extends JPanel implements MouseListener, ControlledPanel{
+public class BoardPanel extends JPanel implements MouseListener, MouseMotionListener, ControlledPanel{
     private PanelsControl control;
             
     private final int pWidth;
@@ -65,6 +66,7 @@ public class BoardPanel extends JPanel implements MouseListener, ControlledPanel
         cellSize = settings.getCellSize();
         
         addMouseListener(this);
+        addMouseMotionListener(this);
     }
 
     @Override
@@ -193,4 +195,22 @@ public class BoardPanel extends JPanel implements MouseListener, ControlledPanel
             repaint();
         }
     }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        int cellX = (int) (getMousePosition().x / cellSize);
+        int cellY = (int) (getMousePosition().y / cellSize);
+        
+        if(pickedElement != null) {
+            System.out.println("cellX: " + cellX + " cellY: " + cellY);
+            b.insertElement(pickedElement, cellX, cellY);
+            brd = b.getArray();
+            repaint();
+        }
+        else
+            System.out.println("pickedElement == null");
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {}
 }

@@ -5,6 +5,8 @@
  */
 package GUI.additionalPanelComponents;
 
+import GUI.ControlledPanel;
+import GUI.PanelsControl;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -21,7 +23,8 @@ import javax.swing.JPanel;
  *
  * @author Dom
  */
-public class Switching extends JPanel implements MouseListener {
+public class Switching extends JPanel implements MouseListener, ControlledPanel {
+    PanelsControl control;
     private JLabel switchText = new JLabel("Automaton:");
     private JLabel automatonText1 = new JLabel("GAME OF LIFE");
     private JLabel automatonText2 = new JLabel("WIREWORLD");
@@ -75,6 +78,9 @@ public class Switching extends JPanel implements MouseListener {
     
     @Override
     public void mouseClicked(MouseEvent e) {
+        
+        control.reset();
+        control.switchGame();
         if(wireworld == true) {
             switchIcon.setIcon(state2);
             wireworld = false;
@@ -106,4 +112,9 @@ public class Switching extends JPanel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {}
+
+    @Override
+    public void setControl(PanelsControl control) {
+        this.control = control;
+    }
 }
